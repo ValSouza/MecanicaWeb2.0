@@ -22,15 +22,15 @@
                with font-awesome or any other icon font library -->
 
         <li class="nav-item">
-          <a href="gerenciar_setor.php" class="nav-link">
+          <a href="cliente_consultar.php" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>
-              Gerenciar Setor
+              Consultar Clientes
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="gerenciar_modelo.php" class="nav-link">
+          <a href="cliente_consultar.php" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>
               Gerenciar Modelo
