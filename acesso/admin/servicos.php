@@ -28,12 +28,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Mecanica: Consultar Clientes</h1>
+              <h1>Mecanica: Serviços</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Administrador</a></li>
-                <li class="breadcrumb-item active">consultar clientes</li>
+                <li class="breadcrumb-item active">Serviços</li>
               </ol>
             </div>
           </div>
@@ -45,16 +45,37 @@
 
         <!-- Default box -->
         <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Cadastre os seus serviços aqui..</h3>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="servicos.php">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Nome do serviço</label>
+                    <input type="text" class="form-control" id="nome" placeholder="digite aqui.." name="nome">
+                  </div>
+                </div>
+              </div>
+              <center>
+                <button name="btnCadastrar" class="btn btn-outline-success">Cadastrar</button>
+                <button name="btnCancelar" class="btn btn-outline-warning">Cancelar</button>
+              </center>
+            </form>
+          </div>
+
+          <hr>
           <!-- /.row -->
           <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Clientes cadastrados</h3>
+                  <h3 class="card-title">Serviços cadastrados</h3>
 
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 300px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="digite o nome do cliente...">
+                      <input type="text" name="buscarServicos" class="form-control float-right" placeholder="Search">
 
                       <div class="input-group-append">
                         <button type="submit" name="btnBuscar" class="btn btn-default"><i class="fas fa-search"></i></button>
@@ -67,22 +88,16 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Cliente</th>
-                        <th>Telefone</th>
-                        <th>Endereço</th>
+                        <th>Serviços</th>
                         <th>Ação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                      <td>(cliente)</td>
-                      <td>(telefone)</td>
-                      <td>(endereço)</td>
+                      <td>(serviços)</td>
                         <td>
-                          <a href="#" class="btn btn-outline-warning btn-xs">Alterar</a>
-                          <a href="cliente_veiculos.php" class="btn btn-outline-info btn-xs">Veiculos</a>
-                          <a href="#" class="btn btn-outline-primary btn-xs">Atender</a>
-                          <a href="#" class="btn btn-outline-success btn-xs">Ver atendimento</a>
+                          <a href="#" class="btn btn-warning btn-xs">Alterar</a>
+                          <a href="#" class="btn btn-danger btn-xs">Excluir</a>
                         </td>
                       </tr>
                     </tbody>

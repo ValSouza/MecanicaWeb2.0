@@ -1,13 +1,12 @@
-<?php 
-  
+<?php
+
 ?>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
   <!-- Brand Logo -->
-  <a href="../../index3.html" class="brand-link">
-    <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">Controle Financeiro</span>
+  <a href="cliente_consultar.php" class="brand-link">
+    <span class="brand-text font-weight-dark">Mecanica Web</span>
   </a>
 
   <!-- Sidebar -->
@@ -22,84 +21,61 @@
                with font-awesome or any other icon font library -->
 
         <li class="nav-item">
-          <a href="gerenciar_setor.php" class="nav-link">
-            <i class="nav-icon far fa-image"></i>
+          <a href="funcionario.php" class="nav-link">
+            <i class="fa fa-wrench"></i>
             <p>
-              Gerenciar Setor
+              Funcionários
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="gerenciar_modelo.php" class="nav-link">
-            <i class="nav-icon far fa-image"></i>
-            <p>
-              Gerenciar Modelo
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="gerenciar_tipo_modelo.php" class="nav-link">
-            <i class="nav-icon far fa-image"></i>
-            <p>
-              Gerenciar Tipo
-            </p>
-          </a>
-        </li>
-
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-users"></i>
             <p>
-              Equipamento
+              Cliente
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="adm_equipamento.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Novo equipamento</p>
+              <a href="clientes.php" class="nav-link">
+                <i class="fa fa-bolt"></i>
+                <p>Novo cliente</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="consultar_equipamento.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Consultar equipamento</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="alocar_equipamento.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Alocar equipamento</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="remover_equipamento.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Remover equipamento</p>
+              <a href="cliente_consultar.php" class="nav-link">
+                <i class="fa fa-bolt"></i>
+                <p>Consultar clientes</p>
               </a>
             </li>
           </ul>
         </li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-sort"></i>
             <p>
-              Usuario
+              Cadastros
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="novo_usuario.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Novo usuario</p>
+              <a href="servicos.php" class="nav-link">
+                <i class="fa fa-anchor"></i>
+                <p>Serviços</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="consultar_usuario.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Consultar usuario</p>
+              <a href="marca.php" class="nav-link">
+                <i class="fa fa-road"></i>
+                <p>Marcas</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="modelos.php" class="nav-link">
+                <i class="fa fa-star"></i>
+                <p>Modelos</p>
               </a>
             </li>
           </ul>

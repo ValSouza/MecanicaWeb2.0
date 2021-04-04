@@ -54,13 +54,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="nomeC" placeholder="digite aqui.." name="nomeC">
+                                        <input type="text" class="form-control" id="nomeC" placeholder="digite o nome aqui.." name="nomeC">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Telefone</label>
-                                        <input type="text" class="form-control" id="tel" placeholder="digite aqui.." name="tel">
+                                        <input type="text" class="form-control" id="tel" placeholder="digite o telefone aqui.." name="tel">
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Endereço</label>
-                                        <input type="text" class="form-control" id="end" placeholder="digite aqui.." name="end">
+                                        <input type="text" class="form-control" id="end" placeholder="digite o endereço aqui.." name="end">
                                     </div>
                                 </div>
                             </div>
