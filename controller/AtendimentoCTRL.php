@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/dao/AtendimentoDAO.php';
 
 define('CadastrarAtendimento', 'CadastrarAtendimento');
 
-class AtendimentoCTRL
+class AtendimentoCTRL 
 {
 
     public function CadastrarAtendimento(AtendimentoVO $vo)

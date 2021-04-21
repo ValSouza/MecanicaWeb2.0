@@ -1,6 +1,6 @@
 <?php
-
-    class ServicaoVO{
+require_once 'SistemaVO.php';
+    class ServicoVO extends SistemaVO{
 
         private $idUsuario;
         private $nomeServico;

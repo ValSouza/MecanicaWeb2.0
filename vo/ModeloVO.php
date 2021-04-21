@@ -1,6 +1,8 @@
 <?php
 
-    class ModeloVO{
+require_once 'SistemaVO.php';
+
+    class ModeloVO extends SistemaVO{
 
         private $idUsuario;
         private $idMarca;

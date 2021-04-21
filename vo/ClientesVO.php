@@ -1,6 +1,8 @@
 <?php
 
-    class ClientesVO{
+require_once 'SistemaVO.php';
+
+    class ClientesVO extends SistemaVO{
 
         private $idCliente;
         private $nomeCliente;

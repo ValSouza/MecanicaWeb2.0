@@ -3,7 +3,6 @@ require_once 'SistemaVO.php';
 
 class AtendimentoVO extends SistemaVO
 {
-
     private $idCliente;
     private $DataAtendimento;
     private $Obs;
