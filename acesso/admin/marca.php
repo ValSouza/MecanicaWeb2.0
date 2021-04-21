@@ -1,3 +1,20 @@
+<?php
+require_once '../../controller/MarcaCTRL.php';
+require_once '../../vo/MarcaVO.php';
+$ctrl = new MarcaCTRL();
+
+if(isset($_POST['btnCadastrar'])){
+$vo=new MarcaVO();
+$ctrl=new MarcaCTRL();
+$vo->setnomeMarca($_POST['nome']);
+
+$ret= $ctrl->CadastrarMarca($vo);
+}
+$marcas=$ctrl->ConsultarMarca();
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -93,13 +110,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                      <td>(marcas)</td>
-                        <td>
+                    <?php for ($i=0; $i <count($marcas) ; $i++)  { ?>
+                          <tr>
+                          <td><?= $marcas[$i]['nome_marca']?></td>
+                          <td>
                           <a href="#" class="btn btn-warning btn-xs">Alterar</a>
                           <a href="#" class="btn btn-danger btn-xs">Excluir</a>
                         </td>
                       </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>

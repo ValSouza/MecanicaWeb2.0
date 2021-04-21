@@ -15,7 +15,7 @@ class AtendimentoDAO extends Conexao{
                                              values(?,?,?,?,?)';
         $sql=new PDOStatement();
         $sql=$conexao->prepare($comando_sql); 
-        $sql->bindValue(1,$vo->g()); //erro
+        $sql->bindValue(1,$vo->get()); //erro
         $sql->bindValue(2,$vo->getDescricao());//erro
         $sql->bindValue(3,$vo->getIdModelo());//erro
         $sql->bindValue(4,$vo->getidTipo());//erro

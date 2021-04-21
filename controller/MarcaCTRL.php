@@ -18,7 +18,7 @@ class MarcaCTRL{
 
         $vo->setData(UtilCTRL::DataAtual());
         $vo->setHora(UtilCTRL::HoraAtual());
-        $vo->setFuncao(CadastrarAtendimento);
+        $vo->setFuncao(CadastrarMarca);
         $vo->setidLogado(UtilCTRL::CodigoUserLogado());
 
         return $dao ->CadastrarMarca($vo);
