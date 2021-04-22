@@ -22,7 +22,7 @@ function ValidarTela(n_tela) {
             }
             break;
         case 4: //tela  modelos
-            if ($("#nome").val() == '' ||
+            if ($("#modelo").val() == '' ||
                 $("#idmarca").val() == '') {
                 retorno = false;
                 toastr.warning(RetonaMsg(0));

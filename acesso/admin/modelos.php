@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <center>
-                                <button name="btnCadastrar" class="btn btn-outline-success">Cadastrar</button>
+                                <button name="btnCadastrar" class="btn btn-outline-success"onclick="return ValidarTela(1)">Cadastrar</button>
                                 <button name="btnCancelar" class="btn btn-outline-warning">Cancelar</button>
                             </center>
                         </form>
