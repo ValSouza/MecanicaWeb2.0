@@ -1,6 +1,6 @@
 <?php 
-
-    class FuncionarioVO{
+require_once 'SistemaVO.php';
+class FuncionarioVO extends SistemaVO{
 
         private $idStaff;
         private $nomeStaff;

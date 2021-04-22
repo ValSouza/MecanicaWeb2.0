@@ -1,3 +1,20 @@
+<?php
+require_once '../../controller/MarcaCTRL.php';
+require_once '../../vo/MarcaVO.php';
+$ctrl = new MarcaCTRL();
+
+if(isset($_POST['btnCadastrar'])){
+$vo=new MarcaVO();
+$ctrl=new MarcaCTRL();
+$vo->setnomeMarca($_POST['nome']);
+
+$ret= $ctrl->CadastrarMarca($vo);
+}
+$marcas=$ctrl->ConsultarMarca();
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -28,7 +45,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Mecanica: Marcas</h1>
+              <h1>Mecânica: Marcas</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -46,7 +63,7 @@
         <!-- Default box -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Cadastre os suas marcas aqui..</h3>
+            <h3 class="card-title">Cadastre os suas marcas aqui.</h3>
           </div>
           <div class="card-body">
             <form method="POST" action="marca.php">
@@ -93,13 +110,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                      <td>(marcas)</td>
-                        <td>
+                    <?php for ($i=0; $i <count($marcas) ; $i++)  { ?>
+                          <tr>
+                          <td><?= $marcas[$i]['nome_marca']?></td>
+                          <td>
                           <a href="#" class="btn btn-warning btn-xs">Alterar</a>
                           <a href="#" class="btn btn-danger btn-xs">Excluir</a>
                         </td>
                       </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>

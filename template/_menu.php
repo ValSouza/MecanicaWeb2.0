@@ -6,7 +6,7 @@
 
   <!-- Brand Logo -->
   <a href="cliente_consultar.php" class="brand-link">
-    <span class="brand-text font-weight-dark">Mecanica Web</span>
+    <span class="brand-text font-weight-dark">Mecânica Web</span>
   </a>
 
   <!-- Sidebar -->

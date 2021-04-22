@@ -28,7 +28,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Mecanica: Serviços</h1>
+              <h1>Mecânica: Serviços</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@
         <!-- Default box -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Cadastre os seus serviços aqui..</h3>
+            <h3 class="card-title">Cadastre os seus serviços aqui.</h3>
           </div>
           <div class="card-body">
             <form method="POST" action="servicos.php">
