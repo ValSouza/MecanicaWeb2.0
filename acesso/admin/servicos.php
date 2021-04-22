@@ -1,3 +1,18 @@
+<?php
+require_once '../../controller/ServicoCTRL.php';
+require_once '../../vo/ServicoVO.php';
+$ctrl = new   ServicoCTRL();
+
+if(isset($_POST['btnCadastrar'])){
+$vo=new ServicoVO();
+$ctrl=new ServicoCTRL();
+$vo->setnomeServico($_POST['nome']);
+
+$ret= $ctrl->CadastrarServico($vo);
+}
+$servicos=$ctrl->ConsultarServico();
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -59,7 +74,7 @@
                 </div>
               </div>
               <center>
-                <button name="btnCadastrar" class="btn btn-outline-success">Cadastrar</button>
+                <button name="btnCadastrar" class="btn btn-outline-success" onclick="return ValidarTela(2)">Cadastrar</button>
                 <button name="btnCancelar" class="btn btn-outline-warning">Cancelar</button>
               </center>
             </form>
@@ -93,13 +108,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                      <td>(serviços)</td>
+                    <?php for ($i=0; $i <count($servicos) ; $i++)  { ?>
+                          <tr>
+                          <td><?= $servicos[$i]['nome_servico']?></td>
                         <td>
                           <a href="#" class="btn btn-warning btn-xs">Alterar</a>
                           <a href="#" class="btn btn-danger btn-xs">Excluir</a>
                         </td>
                       </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>
@@ -124,6 +141,7 @@
     <!-- jQuery -->
     <?php
     include_once '../../template/_scripts.php';
+    include_once '../../template/_msg.php';
     ?>
 </body>
 

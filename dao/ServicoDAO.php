@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/controller/UtilCTRL.php';
 
 class ServicoDAO extends Conexao{
 
@@ -39,7 +40,8 @@ class ServicoDAO extends Conexao{
         
         $sql=new PDOStatement();
         $sql= $conexao->prepare($comando_sql);
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->bindValue(1, UtilCTRL::CodigoUserLogado());
+        $sql->setFetchMode(PDO::FETCH_ASSOC);       
         $sql ->execute();
         return $sql->fetchAll();
     }
