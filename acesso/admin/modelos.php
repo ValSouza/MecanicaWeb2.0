@@ -1,3 +1,22 @@
+<?php
+require_once '../../controller/ModeloCTRL.php';
+require_once '../../vo/ModeloVO.php';
+require_once '../../controller/MarcaCTRL.php';
+require_once '../../vo/MarcaVO.php';
+$ctrlMarcar = new MarcaCTRL();
+$ctrl = new   ModeloCTRL;
+
+if(isset($_POST['btnCadastrar'])){
+$vo=new ModeloVO();
+$ctrl=new ModeloCTRL();
+$vo->setnomeModelo($_POST['nome']);
+
+$ret= $ctrl->CadastrarModelo($vo);
+}
+//$modelos=$ctrl->ConsultarModelo();   erro na controle 
+$marcas=$ctrlMarcar->ConsultarMarca();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -62,6 +81,9 @@
                                         <label>Selecione a marca</label>
                                         <select class="form-control" name="modelo" id="modelo">
                                         <option value="">Selecione</option>
+                                        <?php for ($i = 0; $i < count($marcas); $i++) { ?>
+                                        <option value="<?= $marcas[$i]['id_marca'] ?>" <?= $marcas == $marcas[$i]['id_marca'] ? 'selected' : '' ?>><?= $marcas[$i]['nome_marca'] ?> </option>
+                                        <?php } ?>
                                         </select>
                                     </div>
                                 </div>
