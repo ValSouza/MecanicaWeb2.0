@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< Updated upstream
-require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/MarcaDAO.php';
-=======
 require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/AtendimentoDAO.php';
->>>>>>> Stashed changes
 require_once 'UtilCTRL.php';
 
 define('CadastrarAtendimento', 'CadastrarAtendimento');
@@ -12,13 +8,14 @@ define('CadastrarAtendimento', 'CadastrarAtendimento');
 class AtendimentoCTRL 
 {
 
-    public function CadastrarAtendimento( AtendimentoVO $vo)
+    public function CadastrarAtendimento(AtendimentoVO $vo)
     {
         if (
             $vo->getData() == '' ||
-            $vo->getDescricao() == '' ||
-            $vo->getIdModelo() == '' ||
-            $vo->getidTipo() == ''
+            $vo->getObs() == '' ||
+            $vo->getIdUsuario() == '' ||
+            $vo->getIdVeiculo() == '' ||
+            $vo->getIdCliente()
         ) {
             return 0;
         }

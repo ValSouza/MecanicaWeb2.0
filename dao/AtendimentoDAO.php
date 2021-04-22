@@ -8,18 +8,18 @@ class AtendimentoDAO extends Conexao{
         $conexao = parent::retornaConexao();
 
         $comando_sql= 'insert into tb_venda (data_venda,
-                                             obs_venda,
-                                             id_cliente,
+                                             obs_valor,
+                                             id_usuario,
                                              id_veiculo,
-                                             id_usuario) 
+                                             id_cliente) 
                                              values(?,?,?,?,?)';
         $sql=new PDOStatement();
         $sql=$conexao->prepare($comando_sql); 
-        $sql->bindValue(1,$vo->get()); //erro
-        $sql->bindValue(2,$vo->getDescricao());//erro
-        $sql->bindValue(3,$vo->getIdModelo());//erro
-        $sql->bindValue(4,$vo->getidTipo());//erro
-        $sql->bindValue(5,$vo->getidLogado());//erro
+        $sql->bindValue(1,$vo->getData()); //erro
+        $sql->bindValue(2,$vo->getObs());//erro
+        $sql->bindValue(3,$vo->getIdUsuario());//erro
+        $sql->bindValue(4,$vo->getIdVeiculo());//erro
+        $sql->bindValue(5,$vo->getIdCliente();
 
         try {
             $sql->execute();

@@ -3,75 +3,66 @@ require_once 'SistemaVO.php';
 
 class AtendimentoVO extends SistemaVO
 {
-    private $idCliente;
+    private $idVenda;
     private $DataAtendimento;
     private $Obs;
-    private $Valor;
-    private $idServico;
+    private $idUsuario;
     private $IdVeiculo;
-    private $idFuncionario;
+    private $idCliente;
 
-    private function setidClienter($idCliente)
+    public function setidVenda($id)
     {
-        $this->idCliente = $idCliente;
+        $this->idVenda = $id;
     }
-    private function getidCliente()
+    public function getIdVenda()
     {
-        return $this->idCliente;
+        return $this->idVenda;
     }
 
-    private function setDataAtendimento($DataAtendimento)
+    public function setDataAtendimento($DataAtendimento)
     {
         $this->DataAtendimento = trim($DataAtendimento);
     }
-    private function geDataAtendimento()
+    public function geDataAtendimento()
     {
         return $this->DataAtendimento;
     }
 
-    private function setObs($Obs)
+    public function setObs($Obs)
     {
         $this->Obs = trim($Obs);
     }
-    private function getObs()
+    public function getObs()
     {
         return $this->Obs;
     }
 
-    private function setValor($Valor)
-    {
-        $this->Valor = $Valor;
-    }
-    private function getValor()
-    {
-        return $this->Valor;
+    public function setIdUsuario($id){
+        $this->idUsuario = $id;
     }
 
-    private function setidServico($idServico)
-    {
-        $this->idServico = trim($idServico);
-    }
-    private function getidServico()
-    {
-        return $this->idServico;
+    public function getIdUsuario(){
+        return $this->idUsuario;
     }
 
-    private function setIdVeiculo($IdVeiculo)
+    public function setIdVeiculo($IdVeiculo)
     {
         $this->IdVeiculo = trim($IdVeiculo);
     }
-    private function getIdVeiculo()
+    public function getIdVeiculo()
     {
         return $this->IdVeiculo;
     }
 
-    private function setidFuncionario($idFuncionario)
+    public function setidCliente($id)
     {
-        $this->idFuncionario = trim($idFuncionario);
+        $this->idCliente = trim($id);
     }
-    private function getidFuncionario()
+    public function getIdCliente()
     {
-        return $this->idFuncionario;
+        return $this->idCliente;
     }
+
+ 
     
 }
