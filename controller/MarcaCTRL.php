@@ -1,6 +1,5 @@
 <?php
 
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/MarcaDAO.php';
 require_once 'UtilCTRL.php';
 

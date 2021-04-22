@@ -6,7 +6,7 @@ class UtilCTRL{
         return 1;
     }
     public static function CaminhoRoot(){
-        return $_SERVER['DOCMENT_ROOT'].'/MecanicaWeb2.0/';
+        return $_SERVER['DOCUMENT_ROOT'].'/MecanicaWeb2.0/';
     }
 
     private static function SetarFusorario(){

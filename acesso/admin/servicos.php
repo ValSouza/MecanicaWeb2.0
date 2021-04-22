@@ -1,7 +1,7 @@
 <?php
 require_once '../../controller/ServicoCTRL.php';
 require_once '../../vo/ServicoVO.php';
-$ctrl = new   ServicoCTRL();
+$ctrl = new   ServicoCTRL;
 
 if(isset($_POST['btnCadastrar'])){
 $vo=new ServicoVO();
