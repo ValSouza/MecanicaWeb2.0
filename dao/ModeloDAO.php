@@ -36,12 +36,15 @@ class ModeloDAO extends Conexao{
     public function ConsultarModelo(){
         $conexao=parent::retornaConexao();
         $comando_sql='select id_modelo,
-                             nome_modelo
-                             from tb_modelo
-                             order by nome_modelo';
+                             nome_modelo,
+                             tb_modelo.id_marca,
+                             nome_marca from tb_modelo 
+                             inner join tb_marca on tb_modelo.id_marca = tb_marca.id_marca 
+                             where tb_modelo.id_usuario = ? order by nome_marca, nome_modelo';
         
         $sql=new PDOStatement();
         $sql= $conexao->prepare($comando_sql);
+        $sql->bindValue(1, UtilCTRL::CodigoUserLogado());
         $sql->setFetchMode(PDO::FETCH_ASSOC);
         $sql ->execute();
         return $sql->fetchAll();

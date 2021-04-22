@@ -1,6 +1,4 @@
 <?php
-
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/MarcaDAO.php';
 require_once 'UtilCTRL.php';
 
@@ -22,16 +20,10 @@ class ModeloCTRL{
         $vo->setidLogado(UtilCTRL::CodigoUserLogado());
 
         return $dao ->CadastrarModelo($vo);
-
     }
 
     public function ConsultarModelo(){
         $dao=new ModeloDAO();
-       return $dao->ConsultarModelo();
- 
-     }  
-     
-
-   
-    
+       return $dao->ConsultarModelo(); 
+     }
 }
