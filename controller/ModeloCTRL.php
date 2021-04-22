@@ -23,7 +23,7 @@ class ModeloCTRL{
     }
 
     public function ConsultarModelo(){
-        $dao=new ModeloDAO();
+       $dao=new ModeloDAO();
        return $dao->ConsultarModelo(); 
      }
 }

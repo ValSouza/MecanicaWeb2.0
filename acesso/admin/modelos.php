@@ -13,7 +13,7 @@ $vo->setnomeModelo($_POST['nome']);
 
 $ret= $ctrl->CadastrarModelo($vo);
 }
-$medelos=$ctrl->ConsultarModelo();
+//$modelos=$ctrl->ConsultarModelo();   erro na controle 
 $marcas=$ctrlMarcar->ConsultarMarca();
 ?>
 
@@ -81,8 +81,8 @@ $marcas=$ctrlMarcar->ConsultarMarca();
                                         <label>Selecione a marca</label>
                                         <select class="form-control" name="modelo" id="modelo">
                                         <option value="">Selecione</option>
-                                        <?php for ($i = 0; $i < count($modelos); $i++) { ?>
-                                        <option value="<?= $modelos[$i]['id_modelo'] ?>"><?= $modelos[$i]['nome_modelo'] ?>
+                                        <?php for ($i = 0; $i < count($marcas); $i++) { ?>
+                                        <option value="<?= $marcas[$i]['id_marca'] ?>" <?= $marcas == $marcas[$i]['id_marca'] ? 'selected' : '' ?>><?= $marcas[$i]['nome_marca'] ?> </option>
                                         <?php } ?>
                                         </select>
                                     </div>
