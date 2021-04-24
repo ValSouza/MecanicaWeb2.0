@@ -30,7 +30,7 @@ class AtendimentoVO extends SistemaVO
 
     public function setObs($Obs)
     {
-        $this->Obs = trim($Obs);
+        $this->Obs = ltrim(trim($Obs));
     }
     public function getObs()
     {
