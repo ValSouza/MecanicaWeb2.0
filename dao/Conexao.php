@@ -4,7 +4,7 @@
 define('HOST', 'localhost'); //IP
 define('USER', 'root'); //usuario
 define('PASS', null); //Senha
-define('DB', 'db_mecanica'); //Banco
+define('DB', 'db_mecanica_2.0'); //Banco
 /**
  * Conexao.class TIPO [Conexão]
  * Descricao: Estabelece conexões com o banco usando SingleTon

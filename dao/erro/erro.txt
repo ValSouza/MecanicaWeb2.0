@@ -28,3 +28,51 @@ Data: 22/04/2021 às 23:15
 Id do usuario logado: 1
 Função chamada: CadastrarFuncionario
 Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 21:56
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 22:12
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 22:12
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 22:23
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 22:27
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 22:28
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 22:36
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao_funcionario' cannot be null
+Data: 23/04/2021 às 22:38
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
