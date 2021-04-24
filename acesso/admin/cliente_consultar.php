@@ -1,3 +1,19 @@
+<?php
+require_once '../../controller/ClienteCTRL.php';
+require_once '../../vo/ClienteVO.php';
+$nome_pesquisa='';
+
+$ctrl = new ClienteCTRL;
+
+if (isset($_POST['btnBuscar'])) {
+  $vo = new ClienteVO();
+  $vo->setNomeCliente($_POST['$nome_pesquisa']);
+  $ret = $ctrl->ConsultarCliente($vo);
+}
+$vo = new ClienteVO();
+$clientes = $ctrl->ConsultarCliente( $vo->setNomeCliente($_POST['$nome_pesquisa']));
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -54,7 +70,7 @@
 
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 300px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="digite o nome do cliente...">
+                      <input type="text" name="nome_pesquisa" value="<?= $nome_pesquisa ?>"class="form-control float-right" placeholder="digite o nome do cliente...">
 
                       <div class="input-group-append">
                         <button type="submit" name="btnBuscar" class="btn btn-default"><i class="fas fa-search"></i></button>
@@ -74,10 +90,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                      <td>(cliente)</td>
-                      <td>(telefone)</td>
-                      <td>(endereço)</td>
+                    <?php for ($i=0; $i <count($clientes) ; $i++)  { ?>
+                          <tr>
+                          <td><?= $clientes[$i]['nome_cliente']?></td>
+                          <td><?= $clientes[$i]['telefone_cliente']?></td>
+                          <td><?= $clientes[$i]['endereco_cliente']?></td>
                         <td>
                           <a href="#" class="btn btn-outline-warning btn-xs">Alterar</a>
                           <a href="cliente_veiculos.php" class="btn btn-outline-info btn-xs">Veiculos</a>
@@ -85,6 +102,7 @@
                           <a href="#" class="btn btn-outline-success btn-xs">Ver atendimento</a>
                         </td>
                       </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>

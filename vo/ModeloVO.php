@@ -4,20 +4,20 @@ require_once 'SistemaVO.php';
 
     class ModeloVO extends SistemaVO{
 
-        private $idUsuario;
         private $idMarca;
         private $nomeModelo;
+        private $idModelo;
                
-        public function setidUsuario($idUsuario){
-            $this->idUsuario = $idUsuario;
+        public function setIdModelo($id){
+            $this->idModelo = $id;
         }
 
-        public function getidUsuario(){
-            return $this->idUsuario;
+        public function getIdModelo(){
+            return $this->idModelo;
         }
 
         public function setidMarca($idMarca){
-            $this->idMarca = ltrim(trim($idMarca));
+            $this->idMarca = $idMarca;
         }
 
         public function getidMarca(){

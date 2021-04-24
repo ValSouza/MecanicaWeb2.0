@@ -22,24 +22,24 @@ function ValidarTela(n_tela) {
             }
             break;
         case 4: //tela  modelos
-            if ($("#modelo").val() == '' ||
-                $("#idmarca").val() == '') {
+            if ($("#nome").val() == '' ||
+                $("#marca").val() == '') {
                 retorno = false;
                 toastr.warning(RetonaMsg(0));
             }
             break;
         case 5: //Funcionario
-            if ($("#nome").val().trim() == '' ||
-                $("#telefone").val().trim() == '' ||
-                $("#endereco").val().trim() == '') {
+            if ($("#nomeF").val().trim() == '' ||
+                $("#tel").val().trim() == '' ||
+                $("#end").val().trim() == '') {
                 retorno = false;
                 toastr.warning(RetonaMsg(0));
             }
             break;
         case 6: //cliente
             if ($("#nome").val().trim() == '' ||
-                $("#telefone").val().trim() == '' ||
-                $("#endereco").val().trim() == '') {
+                $("#tel").val().trim() == '' ||
+                $("#end").val().trim() == '') {
                 retorno = false;
                 toastr.warning(RetonaMsg(0));
             }

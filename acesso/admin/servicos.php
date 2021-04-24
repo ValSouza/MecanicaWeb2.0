@@ -10,6 +10,7 @@ $vo->setnomeServico($_POST['nome']);
 
 $ret= $ctrl->CadastrarServico($vo);
 }
+
 $servicos=$ctrl->ConsultarServico();
 
 ?>

@@ -3,18 +3,19 @@ require_once '../../controller/ModeloCTRL.php';
 require_once '../../vo/ModeloVO.php';
 require_once '../../controller/MarcaCTRL.php';
 require_once '../../vo/MarcaVO.php';
+
 $ctrlMarcar = new MarcaCTRL();
 $ctrl = new   ModeloCTRL;
 
-if(isset($_POST['btnCadastrar'])){
-$vo=new ModeloVO();
-$ctrl=new ModeloCTRL();
-$vo->setnomeModelo($_POST['nome']);
+if (isset($_POST['btnCadastrar'])) {
+    $vo = new ModeloVO();
+    $vo->setnomeModelo($_POST['modelo']);
+    $vo->setidMarca($_POST['marca']);
 
-$ret= $ctrl->CadastrarModelo($vo);
+    $ret = $ctrl->CadastrarModelo($vo);
 }
-//$modelos=$ctrl->ConsultarModelo();   erro na controle 
-$marcas=$ctrlMarcar->ConsultarMarca();
+$modelos= $ctrl->ConsultarModelo();  
+$marcas = $ctrlMarcar->ConsultarMarca();
 ?>
 
 <!DOCTYPE html>
@@ -79,17 +80,17 @@ $marcas=$ctrlMarcar->ConsultarMarca();
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Selecione a marca</label>
-                                        <select class="form-control" name="modelo" id="modelo">
-                                        <option value="">Selecione</option>
-                                        <?php for ($i = 0; $i < count($marcas); $i++) { ?>
-                                        <option value="<?= $marcas[$i]['id_marca'] ?>" <?= $marcas == $marcas[$i]['id_marca'] ? 'selected' : '' ?>><?= $marcas[$i]['nome_marca'] ?> </option>
-                                        <?php } ?>
+                                        <select class="form-control" name="marca" id="marca">
+                                            <option value="">Selecione</option>
+                                            <?php for ($i = 0; $i < count($marcas); $i++) { ?>
+                                                <option value="<?= $marcas[$i]['id_marca'] ?>" <?= $marcas == $marcas[$i]['id_marca'] ? 'selected' : '' ?>><?= $marcas[$i]['nome_marca'] ?> </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <center>
-                                <button name="btnCadastrar" class="btn btn-outline-success"onclick="return ValidarTela(1)">Cadastrar</button>
+                                <button name="btnCadastrar" class="btn btn-outline-success" onclick="return ValidarTela(4)">Cadastrar</button>
                                 <button name="btnCancelar" class="btn btn-outline-warning">Cancelar</button>
                             </center>
                         </form>
@@ -101,7 +102,7 @@ $marcas=$ctrlMarcar->ConsultarMarca();
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Marcas cadastradas</h3>
+                                    <h3 class="card-title">Marcas e Modelos cadastradas</h3>
 
                                     <div class="card-tools">
                                         <div class="input-group input-group-sm" style="width: 300px;">
@@ -118,18 +119,22 @@ $marcas=$ctrlMarcar->ConsultarMarca();
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Nome da marca</th>
+                                                <th>Marca</th>
+                                                <th>modelo</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php for($id = 0; $i < count($modelos); $i++){ ?>
                                             <tr>
-                                                <td>(marcas)</td>
+                                                <td><?= $modelos[$i]['nome_marca']?></td>
+                                                <td><?= $modelos[$i]['nome_modelo']?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning btn-xs">Alterar</a>
                                                     <a href="#" class="btn btn-danger btn-xs">Excluir</a>
                                                 </td>
                                             </tr>
+                                            <?php } ?> 
                                         </tbody>
                                     </table>
                                 </div>

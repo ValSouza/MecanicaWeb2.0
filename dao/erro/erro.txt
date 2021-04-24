@@ -1,0 +1,30 @@
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'status_funcionario' cannot be null
+Data: 22/04/2021 às 23:03
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'status_funcionario' cannot be null
+Data: 22/04/2021 às 23:05
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'status_funcionario' cannot be null
+Data: 22/04/2021 às 23:06
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'status_funcionario' cannot be null
+Data: 22/04/2021 às 23:12
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'status_funcionario' cannot be null
+Data: 22/04/2021 às 23:15
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
