@@ -76,3 +76,15 @@ Data: 23/04/2021 às 22:38
 Id do usuario logado: 1
 Função chamada: CadastrarFuncionario
 Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_funcionario1' in 'field list'
+Data: 24/04/2021 às 13:37
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_funcionario1' in 'field list'
+Data: 24/04/2021 às 13:38
+Id do usuario logado: 1
+Função chamada: CadastrarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
