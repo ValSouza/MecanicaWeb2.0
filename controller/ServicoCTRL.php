@@ -10,8 +10,7 @@ class ServicoCTRL{
 
         if($vo->getnomeServico()==''){
             return 0;
-        }
-        
+        }        
         $dao = new ServicoDAO();
 
         $vo->setData(UtilCTRL::DataAtual());

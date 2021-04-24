@@ -2,13 +2,13 @@
 
 require_once 'SistemaVO.php';
 
-    class ClientesVO extends SistemaVO{
+    class ClienteVO extends SistemaVO{
 
         private $idCliente;
         private $nomeCliente;
         private $phoneCliente;
         private $addressCliente;
-        private $idUsuario;
+        
 
         public function setIdCliente($id){
             $this->idCliente = $id;
@@ -42,13 +42,6 @@ require_once 'SistemaVO.php';
             return $this->addressCliente;
         }
 
-        public function setIdUsuario($usuario){
-            $this->idUsuario = $usuario;
-        }
-
-        public function getIdUsuario(){
-            return $this->idUsuario;
-        }
-        
+                
     }
 ?>

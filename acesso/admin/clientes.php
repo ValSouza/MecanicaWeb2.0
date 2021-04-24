@@ -1,3 +1,18 @@
+<?php
+require_once '../../controller/ClienteCTRL.php';
+require_once '../../vo/ClienteVO.php';
+
+$ctrl = new ClienteCTRL;
+if (isset($_POST['btnCadastrar'])) {
+  $vo = new ClienteVO();
+  $vo->setNomeCliente($_POST['nome']);
+  $vo->setPhoneCliente($_POST['tel']);
+  $vo->setAddressCliente($_POST['end']);
+  $ret = $ctrl->CadastrarCliente($vo);
+}
+
+$clientes = $ctrl->ConsultarCliente();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -54,7 +69,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="nomeC" placeholder="digite o nome aqui.." name="nomeC">
+                                        <input type="text" class="form-control" id="nome" placeholder="digite o nome aqui.." name="nome">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -73,8 +88,8 @@
                                 </div>
                             </div>
                             <center>
-                                <button name="btnCadastrar" class="btn btn-success">Cadastrar</button>
-                                <button name="btnCancelar" class="btn btn-warning">Cancelar</button>
+                                <button name="btnCadastrar" class="btn btn-outline-success" onclick="return ValidarTela(6)">Cadastrar</button>
+                                <button name="btnCancelar" class="btn btn-outline-warning">Cancelar</button>
                             </center>
                         </form>
                     </div>
