@@ -9,6 +9,6 @@
   <!-- Mensagens -->
   <script src="../../template/plugins/toastr/toastr.min.js"></script> 
  <!-- Mensagens -->
- <script src="../../template/js/mensagens.js"></script>
+<script src="../../template/js/mensagens.js"></script>
  <!-- Mensagens -->
- <script src="../../template/js/validacao.js"></script>
+<script src="../../template/js/validacao.js"></script>

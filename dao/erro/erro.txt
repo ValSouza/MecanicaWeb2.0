@@ -94,3 +94,27 @@ Data: 24/04/2021 às 13:43
 Id do usuario logado: 1
 Função chamada: CadastrarMarca
 Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_marca1' in 'field list'
+Data: 25/04/2021 às 13:46
+Id do usuario logado: 1
+Função chamada: CadastrarMarca
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_marca1' in 'field list'
+Data: 25/04/2021 às 13:46
+Id do usuario logado: 1
+Função chamada: CadastrarMarca
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_marca1' in 'field list'
+Data: 25/04/2021 às 14:46
+Id do usuario logado: 1
+Função chamada: CadastrarMarca
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_marca1' in 'field list'
+Data: 25/04/2021 às 14:47
+Id do usuario logado: 1
+Função chamada: CadastrarMarca
+Ip do Cliente: ::1 - Nome da máquina: JACQUELINE-DESK

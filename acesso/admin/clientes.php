@@ -110,6 +110,7 @@ $clientes = $ctrl->ConsultarCliente();
         <!-- jQuery -->
         <?php
         include_once '../../template/_scripts.php';
+        include_once '../../template/_msg.php';// Validação de campo DAO
         ?>
 </body>
 
