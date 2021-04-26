@@ -24,10 +24,10 @@ class ClienteCTRL{
 
     }
 
-    public function ConsultarCliente(ClienteVO $vo){
+    public function ConsultarCliente($nome_pesquisa){
         $dao=new ClienteDAO();
         //$vo->getNomeCliente(); Tem que retornar o nome pesquisado
-       return $dao->ConsultarCliente($vo);
+       return $dao->ConsultarCliente($nome_pesquisa);
  
      }  
      

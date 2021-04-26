@@ -1,17 +1,15 @@
 <?php
 require_once '../../controller/ClienteCTRL.php';
-require_once '../../vo/ClienteVO.php';
+
 $nome_pesquisa='';
 
 $ctrl = new ClienteCTRL;
 
 if (isset($_POST['btnBuscar'])) {
-  $vo = new ClienteVO();
-  $vo->setNomeCliente($_POST['$nome_pesquisa']);
-  $ret = $ctrl->ConsultarCliente($vo);
+  $nome_pesquisa = $_POST['nome_pesquisa'];
+
 }
-$vo = new ClienteVO();
-$clientes = $ctrl->ConsultarCliente( $vo->setNomeCliente($_POST['$nome_pesquisa']));
+$clientes = $ctrl->ConsultarCliente($nome_pesquisa);
 ?>
 
 <!DOCTYPE html>

@@ -10,8 +10,7 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setAddressCliente($_POST['end']);
   $ret = $ctrl->CadastrarCliente($vo);
 }
-
-$clientes = $ctrl->ConsultarCliente();
+//$clientes = $ctrl->ConsultarCliente();
 ?>
 <!DOCTYPE html>
 <html>

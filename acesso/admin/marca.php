@@ -143,7 +143,9 @@ $marcas=$ctrl->ConsultarMarca();
     <!-- jQuery -->
     <?php
     include_once '../../template/_scripts.php';
+    include_once '../../template/_msg.php';
     ?>
+    
 </body>
 
 </html>
