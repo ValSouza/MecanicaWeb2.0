@@ -109,6 +109,7 @@ if (isset($_POST['btnCadastrar'])) {
         <!-- jQuery -->
         <?php
         include_once '../../template/_scripts.php';
+        include_once '../../template/_msg.php';
         ?>
 </body>
 

@@ -195,7 +195,8 @@ $funcionarios = $ctrl->ConsultarFuncionario();
 
     <!-- jQuery -->
     <?php
-    include_once '../../template/_scripts.php';
+     include_once '../../template/_scripts.php';
+     include_once '../../template/_msg.php';
     ?>
 </body>
 
