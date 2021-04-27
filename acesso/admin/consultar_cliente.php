@@ -59,6 +59,7 @@ $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
 
         <!-- Default box -->
         <div class="card">
+        <form method="POST" action="consultar_cliente.php">
           <!-- /.row -->
           <div class="row">
             <div class="col-12">
@@ -76,6 +77,7 @@ $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
                     </div>
                   </div>
                 </div>
+        </form>      
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
