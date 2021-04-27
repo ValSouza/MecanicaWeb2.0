@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/ServicoDAO.php';
 require_once 'UtilCTRL.php';
 
 define('CadastrarServico', 'CadastrarServico');
+define('ExcluirServico', 'ExcluirServico');
 
 class ServicoCTRL{
 
@@ -28,6 +29,16 @@ class ServicoCTRL{
  
      }  
      
+     public function ExcluirServico($id){
+        $dao=new ServicoDAO();
+        $voSistema= new SistemaVO();
+        
+        $voSistema->setData(UtilCTRL::DataAtual());
+        $voSistema->setHora(UtilCTRL::HoraAtual());
+        $voSistema->setFuncao(ExcluirServico);
+        $voSistema->setidLogado(UtilCTRL::CodigoUserLogado());
+        return $dao->ExcluirServico($id,$voSistema);
+    }
 
    
     

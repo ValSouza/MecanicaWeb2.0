@@ -3,15 +3,18 @@ require_once '../../controller/ServicoCTRL.php';
 require_once '../../vo/ServicoVO.php';
 $ctrl = new   ServicoCTRL;
 
-if(isset($_POST['btnCadastrar'])){
-$vo=new ServicoVO();
-$ctrl=new ServicoCTRL();
-$vo->setnomeServico($_POST['nome']);
+if (isset($_POST['btnCadastrar'])) {
+  $vo = new ServicoVO();
+  $ctrl = new ServicoCTRL();
+  $vo->setnomeServico($_POST['nome']);
 
-$ret= $ctrl->CadastrarServico($vo);
+  $ret = $ctrl->CadastrarServico($vo);
+}else if (isset($_POST['btnExcluir'])){
+  $id=$_POST['id_item'];
+  $ret=$ctrl->ExcluirServico($id);
 }
 
-$servicos=$ctrl->ConsultarServico();
+$servicos = $ctrl->ConsultarServico();
 
 ?>
 <!DOCTYPE html>
@@ -109,17 +112,22 @@ $servicos=$ctrl->ConsultarServico();
                       </tr>
                     </thead>
                     <tbody>
-                    <?php for ($i=0; $i <count($servicos) ; $i++)  { ?>
-                          <tr>
-                          <td><?= $servicos[$i]['nome_servico']?></td>
-                        <td>
-                          <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                          <a href="#" class="btn btn-danger btn-xs">Excluir</a>
-                        </td>
-                      </tr>
+                      <?php for ($i = 0; $i < count($servicos); $i++) { ?>
+                        <tr>
+                          <td><?= $servicos[$i]['nome_servico'] ?></td>
+                          <td>
+                            <a href="#" class="btn btn-warning btn-xs">Alterar</a>
+                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $servicos[$i]['id_servico'] ?>','<?= $servicos[$i]['nome_servico'] ?>')">Excluir</a>
+                          </td>
+                        </tr>
                       <?php } ?>
                     </tbody>
                   </table>
+                  <form method="POST" action="servicos.php">
+                    <?php
+                    include_once '../../template/_modal_excluir.php';
+                    ?>
+                  </form>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -144,7 +152,7 @@ $servicos=$ctrl->ConsultarServico();
     include_once '../../template/_scripts.php';
     include_once '../../template/_msg.php';
     ?>
-     
+
 </body>
 
 </html>

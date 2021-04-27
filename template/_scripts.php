@@ -12,3 +12,5 @@
  <script src="../../template/js/mensagens.js"></script>
  <!-- Mensagens -->
  <script src="../../template/js/validacao.js"></script>
+ 
+ <script src="../../template/js/funcoes.js"></script>
