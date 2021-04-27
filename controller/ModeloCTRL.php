@@ -3,14 +3,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/ModeloDAO.php';
 require_once 'UtilCTRL.php';
 
 define('CadastrarModelo', 'CadastrarModelo');
-
+define('ExcluirModelo', 'ExcluirModelo');
 class ModeloCTRL
 {
 
     public function CadastrarModelo(ModeloVO $vo)
     {
-
-        if ($vo->getNomeModelo() == '' ||
+        if (
+            $vo->getNomeModelo() == '' ||
             $vo->getidMarca() == ''
         ) {
             return 0;
@@ -27,7 +27,18 @@ class ModeloCTRL
 
     public function ConsultarModelo()
     {
-                $dao = new ModeloDAO();
+        $dao = new ModeloDAO();
         return $dao->ConsultarModelo();
+    }
+    public function ExcluirModelo($id)
+    {
+        $dao = new ModeloDAO();
+        $voSistema = new ModeloVO();
+
+        $voSistema->setData(UtilCTRL::DataAtual());
+        $voSistema->setHora(UtilCTRL::HoraAtual());
+        $voSistema->setFuncao(ExcluirModelo);
+        $voSistema->setidLogado(UtilCTRL::CodigoUserLogado());
+        return $dao->ExcluirModelo($id, $voSistema);
     }
 }
