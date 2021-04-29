@@ -43,7 +43,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="cliente_consultar.php" class="nav-link">
+              <a href="consultar_cliente.php" class="nav-link">
                 <i class="fa fa-bolt"></i>
                 <p>Consultar clientes</p>
               </a>

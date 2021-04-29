@@ -140,7 +140,8 @@
         <!-- jQuery -->
         <?php
         include_once '../../template/_scripts.php';
-        include_once '../../template/_msg.php';// Validação de campo DAO
+
+        include_once '../../template/_msg.php';
         ?>
 </body>
 

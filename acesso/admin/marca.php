@@ -3,14 +3,17 @@ require_once '../../controller/MarcaCTRL.php';
 require_once '../../vo/MarcaVO.php';
 $ctrl = new MarcaCTRL();
 
-if(isset($_POST['btnCadastrar'])){
-$vo=new MarcaVO();
-$ctrl=new MarcaCTRL();
-$vo->setnomeMarca($_POST['nome']);
+if (isset($_POST['btnCadastrar'])) {
+  $vo = new MarcaVO();
+  $ctrl = new MarcaCTRL();
+  $vo->setnomeMarca($_POST['nome']);
 
-$ret= $ctrl->CadastrarMarca($vo);
+  $ret = $ctrl->CadastrarMarca($vo);
+} else if (isset($_POST['btnExcluir'])) {
+  $id = $_POST['id_item'];
+  $ret = $ctrl->ExcluirMarca($id);
 }
-$marcas=$ctrl->ConsultarMarca();
+$marcas = $ctrl->ConsultarMarca();
 
 ?>
 
@@ -110,17 +113,22 @@ $marcas=$ctrl->ConsultarMarca();
                       </tr>
                     </thead>
                     <tbody>
-                    <?php for ($i=0; $i <count($marcas) ; $i++)  { ?>
-                          <tr>
-                          <td><?= $marcas[$i]['nome_marca']?></td>
+                      <?php for ($i = 0; $i < count($marcas); $i++) { ?>
+                        <tr>
+                          <td><?= $marcas[$i]['nome_marca'] ?></td>
                           <td>
-                          <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                          <a href="#" class="btn btn-danger btn-xs">Excluir</a>
-                        </td>
-                      </tr>
+                            <a href="#" class="btn btn-warning btn-xs">Alterar</a>
+                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $marcas[$i]['id_marca'] ?>','<?= $marcas[$i]['nome_marca'] ?>')">Excluir</a>
+                          </td>
+                        </tr>
                       <?php } ?>
                     </tbody>
                   </table>
+                  <form method="POST" action="marca.php">
+                    <?php
+                    include_once '../../template/_modal_excluir.php';
+                    ?>
+                  </form>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -145,6 +153,7 @@ $marcas=$ctrl->ConsultarMarca();
     include_once '../../template/_scripts.php';
     include_once '../../template/_msg.php';
     ?>
+
 </body>
 
 </html>

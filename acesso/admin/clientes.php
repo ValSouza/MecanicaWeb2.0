@@ -10,8 +10,7 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setAddressCliente($_POST['end']);
   $ret = $ctrl->CadastrarCliente($vo);
 }
-
-$clientes = $ctrl->ConsultarCliente();
+//$clientes = $ctrl->ConsultarCliente();
 ?>
 <!DOCTYPE html>
 <html>
@@ -110,7 +109,7 @@ $clientes = $ctrl->ConsultarCliente();
         <!-- jQuery -->
         <?php
         include_once '../../template/_scripts.php';
-        include_once '../../template/_msg.php';// Validação de campo DAO
+        include_once '../../template/_msg.php';
         ?>
 </body>
 

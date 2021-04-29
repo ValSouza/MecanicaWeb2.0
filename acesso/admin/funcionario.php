@@ -10,9 +10,12 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setPhoneStaff($_POST['tel']);
   $vo->setSddressStaff($_POST['end']);
   $situacao = isset($_POST['situacao']);
-  $vo->setSituation($situacao)? '1' : '0';  
+  $vo->setSituation($situacao) ? '1' : '0';
 
   $ret = $ctrl->CadastrarFuncionario($vo);
+}else if (isset($_POST['btnExcluir'])) {
+  $id = $_POST['id_item'];
+  $ret = $ctrl->ExcluirFuncionario($id);
 }
 
 $funcionarios = $ctrl->ConsultarFuncionario();
@@ -91,17 +94,17 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                   </div>
                 </div>
                 <center>
-                <br>   
-                <div class="row">
-                  <div class="offset-sm-2 col-sm-10">
-                    <div class="form-check">
-                    <div class="custom-control custom-checkbox">
-                      <label>
-                        <input type="checkbox" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?> />Ativo
-                      </label>
+                  <br>
+                  <div class="row">
+                    <div class="offset-sm-2 col-sm-10">
+                      <div class="form-check">
+                        <div class="custom-control custom-checkbox">
+                          <label>
+                            <input type="checkbox" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?> />Ativo
+                          </label>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
                 </center>
               </div>
               <center>
@@ -142,11 +145,10 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                       </tr>
                     </thead>
                     <tbody>
-                      <?php 
+                      <?php
                       $ativos = 0;
                       $inativos = 0;
-                      for ($i = 0; $i < count($funcionarios); $i++) 
-                      {
+                      for ($i = 0; $i < count($funcionarios); $i++) {
                         if ($funcionarios[$i]['situacao_funcionario'] == 1) {
                           $ativos += 1;
                         } else {
@@ -160,23 +162,28 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                           <td><?= $funcionarios[$i]['situacao_funcionario'] == 1 ? 'Ativo' : 'Inativo' ?></td>
                           <td>
                             <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                            <a href="#" class="btn btn-danger btn-xs">Excluir</a>
+                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $funcionarios[$i]['id_funcionario'] ?>','<?= $funcionarios[$i]['nome_funcionario'] ?>')">Excluir</a>
                           </td>
                         </tr>
                       <?php } ?>
                     </tbody>
-                  </table>                  
-                </div>                
+                  </table>
+                  <form method="POST" action="funcionario.php">
+                    <?php
+                    include_once '../../template/_modal_excluir.php';
+                    ?>
+                  </form>
+                </div>
                 <!-- /.card-body -->
               </div>
               <center>
-              <?php if ($ativos > 0) { ?>   
-                                        <label style="color: green">TOTAL DE ATIVOS: <?= $ativos ?></label>
-                                    <?php } ?>
-                                    <?php if ($inativos > 0) { ?>   
-                                        </br><label style="color: darkgoldenrod">TOTAL DE INATIVOS: <?= $inativos ?></label>
-                                    <?php } ?>
-                                    </center>
+                <?php if ($ativos > 0) { ?>
+                  <label style="color: green">TOTAL DE ATIVOS: <?= $ativos ?></label>
+                <?php } ?>
+                <?php if ($inativos > 0) { ?>
+                  </br><label style="color: darkgoldenrod">TOTAL DE INATIVOS: <?= $inativos ?></label>
+                <?php } ?>
+              </center>
               <!-- /.card -->
             </div>
           </div>
@@ -196,7 +203,8 @@ $funcionarios = $ctrl->ConsultarFuncionario();
     <!-- jQuery -->
     <?php
     include_once '../../template/_scripts.php';
-    include_once '../../template/_msg.php';// Validação de campo DAO
+    include_once '../../template/_msg.php';
+    include_once '../../template/_msg.php';
     ?>
 </body>
 
