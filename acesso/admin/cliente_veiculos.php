@@ -1,3 +1,15 @@
+<?php
+include_once '../../dao/ClienteDAO.php';
+include_once  '../../controller/ClienteCTRL.php';
+$codCli = '';
+$nome = '';
+
+if(isset($_GET['cod']) && isset($_GET['nome'])){
+    $codCli = $_GET['cod'];
+    $nome = $_GET['nome'];
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -54,7 +66,8 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="text" readonly class="form-control" id="nome" name="nome">
+                                        <input type="hidden" class="form-control" value="<?= $codCli ?>" name="codCli" id="codCli">
+                                        <input type="text" readonly class="form-control" value=" <?= $nome ?>" id="nome" name="nome">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -140,7 +153,6 @@
         <!-- jQuery -->
         <?php
         include_once '../../template/_scripts.php';
-
         include_once '../../template/_msg.php';
         ?>
 </body>

@@ -204,7 +204,6 @@ $funcionarios = $ctrl->ConsultarFuncionario();
     <?php
     include_once '../../template/_scripts.php';
     include_once '../../template/_msg.php';
-    include_once '../../template/_msg.php';
     ?>
 </body>
 
