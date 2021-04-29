@@ -43,7 +43,7 @@ class ClienteDAO extends Conexao
         }
     }
 
-    public function ConsultarCliente(ClienteVO $vo)
+    public function ConsultarCliente($nome_pesquisa)
     {
         $conexao = parent::retornaConexao();
         $comando_sql = 'select 
@@ -54,15 +54,21 @@ class ClienteDAO extends Conexao
                        from 
                             tb_cliente 
                        where 
-                            id_usuario = ?'; 
-                       // order bynome_cliente';
-                       $ordenacao = ' order by nome_cliente';
-                       $comando_sql .= $ordenacao;    
+                            id_usuario = ?';
+        // order bynome_cliente';
+
+        if (trim($nome_pesquisa) != '') {
+            $comando_sql .= ' and nome_cliente like ?';
+        }
+
+        $ordenacao = ' order by nome_cliente ';
+        $comando_sql .= $ordenacao;
+
         $sql = new PDOStatement();
         $sql = $conexao->prepare($comando_sql);
         $sql->bindValue(1, UtilCTRL::CodigoUserLogado());
-        if (trim($vo->getNomeCliente()) != '') {
-            $sql->bindValue(2, '%' . $vo->getNomeCliente() . '%');
+        if (trim($nome_pesquisa) != '') {
+            $sql->bindValue(2, '%' . $nome_pesquisa . '%');
         }
 
 

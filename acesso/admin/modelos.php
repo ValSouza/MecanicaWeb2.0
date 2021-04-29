@@ -13,8 +13,11 @@ if (isset($_POST['btnCadastrar'])) {
     $vo->setidMarca($_POST['marca']);
 
     $ret = $ctrl->CadastrarModelo($vo);
+} else if (isset($_POST['btnExcluir'])) {
+    $id = $_POST['id_item'];
+    $ret = $ctrl->ExcluirModelo($id);
 }
-$modelos= $ctrl->ConsultarModelo();  
+$modelos = $ctrl->ConsultarModelo();
 $marcas = $ctrlMarcar->ConsultarMarca();
 ?>
 
@@ -125,18 +128,23 @@ $marcas = $ctrlMarcar->ConsultarMarca();
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php for($id = 0; $i < count($modelos); $i++){ ?>
-                                            <tr>
-                                                <td><?= $modelos[$i]['nome_marca']?></td>
-                                                <td><?= $modelos[$i]['nome_modelo']?></td>
-                                                <td>
-                                                    <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                                                    <a href="#" class="btn btn-danger btn-xs">Excluir</a>
-                                                </td>
-                                            </tr>
-                                            <?php } ?> 
+                                            <?php for ($id = 0; $i < count($modelos); $i++) { ?>
+                                                <tr>
+                                                    <td><?= $modelos[$i]['nome_marca'] ?></td>
+                                                    <td><?= $modelos[$i]['nome_modelo'] ?></td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-warning btn-xs">Alterar</a>
+                                                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $modelos[$i]['id_modelo'] ?>','<?= $modelos[$i]['nome_modelo'] ?>')">Excluir</a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
+                                    <form method="POST" action="modelos.php">
+                                        <?php
+                                        include_once '../../template/_modal_excluir.php';
+                                        ?>
+                                    </form>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -159,7 +167,7 @@ $marcas = $ctrlMarcar->ConsultarMarca();
         <!-- jQuery -->
         <?php
         include_once '../../template/_scripts.php';
-        include_once '../../template/_msg.php';// Validação de campo DAO
+        include_once '../../template/_msg.php';
         ?>
 </body>
 

@@ -1,17 +1,15 @@
 <?php
 require_once '../../controller/ClienteCTRL.php';
-require_once '../../vo/ClienteVO.php';
+
 $nome_pesquisa='';
 
 $ctrl = new ClienteCTRL;
 
 if (isset($_POST['btnBuscar'])) {
-  $vo = new ClienteVO();
-  $vo->setNomeCliente($_POST['$nome_pesquisa']);
-  $ret = $ctrl->ConsultarCliente($vo);
+  $nome_pesquisa = $_POST['nome_pesquisa'];
+
 }
-$vo = new ClienteVO();
-$clientes = $ctrl->ConsultarCliente( $vo->setNomeCliente($_POST['$nome_pesquisa']));
+$clientes = $ctrl->ConsultarCliente($nome_pesquisa);
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +59,7 @@ $clientes = $ctrl->ConsultarCliente( $vo->setNomeCliente($_POST['$nome_pesquisa'
 
         <!-- Default box -->
         <div class="card">
+        <form method="POST" action="consultar_cliente.php">
           <!-- /.row -->
           <div class="row">
             <div class="col-12">
@@ -78,6 +77,7 @@ $clientes = $ctrl->ConsultarCliente( $vo->setNomeCliente($_POST['$nome_pesquisa'
                     </div>
                   </div>
                 </div>
+        </form>      
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
@@ -126,8 +126,8 @@ $clientes = $ctrl->ConsultarCliente( $vo->setNomeCliente($_POST['$nome_pesquisa'
 
     <!-- jQuery -->
     <?php
-    include_once '../../template/_scripts.php';
-    include_once '../../template/_msg.php';// Validação de campo DAO
+   include_once '../../template/_scripts.php';
+   include_once '../../template/_msg.php';
     ?>
 </body>
 

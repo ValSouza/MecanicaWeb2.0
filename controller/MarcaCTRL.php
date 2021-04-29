@@ -4,6 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/MarcaDAO.php';
 require_once 'UtilCTRL.php';
 
 define('CadastrarMarca', 'CadastrarMarca');
+define('ExcluirMarca', 'ExcluirMarca');
 
 class MarcaCTRL{
 
@@ -29,8 +30,17 @@ class MarcaCTRL{
        return $dao->ConsultarMarca();
  
      }  
-     
 
-   
+     public function ExcluirMarca($id)
+    {
+        $dao = new MarcaDAO();
+        $voSistema = new MarcaVO();
+
+        $voSistema->setData(UtilCTRL::DataAtual());
+        $voSistema->setHora(UtilCTRL::HoraAtual());
+        $voSistema->setFuncao(ExcluirMarca);
+        $voSistema->setidLogado(UtilCTRL::CodigoUserLogado());
+        return $dao->ExcluirMarca($id, $voSistema);
+    }   
     
 }
