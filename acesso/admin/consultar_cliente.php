@@ -97,8 +97,6 @@ $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
                           <td><?= $clientes[$i]['endereco_cliente']?></td>
                         <td>
                           <a href="#" class="btn btn-outline-warning btn-xs">Alterar</a>
-
-                          <a href="cliente_veiculos.php" class="btn btn-outline-info btn-xs">Veiculos</a>
                           <a href="cliente_veiculos.php?nome=<?= $clientes[$i]['nome_cliente']?>&cod=<?= $clientes[$i]['id_cliente']?>" class="btn btn-outline-info btn-xs">Veiculos</a>
                           <a href="#" class="btn btn-outline-primary btn-xs">Atender</a>
                           <a href="#" class="btn btn-outline-success btn-xs">Ver atendimento</a>

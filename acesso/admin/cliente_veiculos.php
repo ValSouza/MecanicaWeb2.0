@@ -1,13 +1,38 @@
 <?php
 include_once '../../dao/ClienteDAO.php';
+include_once '../../dao/ModeloDAO.php';
 include_once  '../../controller/ClienteCTRL.php';
+include_once  '../../controller/ModeloCTRL.php';
+include_once '../../controller/VeiculoCTRL.php';
+include_once '../../vo/VeiculoVO.php';
+$voVei = new VeiculoVO();
+
+$ctrlModelo = new ModeloCTRL();
+$ctrlVeiculo = new VeiculoCTRL();
+
+$dao = $ctrlModelo->ConsultarModelo();
 $codCli = '';
 $nome = '';
+$modelo = '';
+$placa = '';
 
-if(isset($_GET['cod']) && isset($_GET['nome'])){
+if (isset($_GET['cod']) && isset($_GET['nome'])) {
+
     $codCli = $_GET['cod'];
+    $voVei->setIdCliente($codCli);
     $nome = $_GET['nome'];
+
+    
 }
+elseif(isset($_POST['codCli']) &&isset($_POST['nome']) && isset($_POST['modelo']) && isset($_POST['placa'])){
+    $codCli = $_POST['cod'];
+    $nome = $_POST['nome'];
+    $modelo = $_POST['modelo'];
+    $placa = $_POST['placa'];  
+}
+
+$modelos = $ctrlModelo->ConsultarModelo();
+$veic = $ctrlVeiculo->ConsultarVeiculo($voVei);
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +100,9 @@ if(isset($_GET['cod']) && isset($_GET['nome'])){
                                         <label>Marca/Modelo</label>
                                         <select class="form-control" name="modelo" id="modelo">
                                             <option value="">Selecione</option>
+                                            <?php for ($i = 0; $i < count($modelos); $i++) { ?>
+                                                <option value="<?= $modelos[$i]['id_modelo'] ?>"><?= $modelos[$i]['nome_marca'] . $modelos[$i]['nome_modelo'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -120,15 +148,17 @@ if(isset($_GET['cod']) && isset($_GET['nome'])){
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php for($i =0; $i < count($veic); $i++){  ?>    
                                             <tr>
-                                                <td>(marca/modelo)</td>
-                                                <td>(placa)</td>
-                                                <td>(cor)</td>
+                                                <td><?= $veic[$i]['nome_marca'] . '/ ' . $veic[$i]['nome_modelo'] ?><td>
+                                                <td><?= $veic[$i]['placa_veiculo']?></td>
+                                                <td><?= $veic[$i]['cor_veiculo']?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning btn-xs">Alterar</a>
                                                     <a href="#" class="btn btn-danger btn-xs">Excluir</a>
                                                 </td>
                                             </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

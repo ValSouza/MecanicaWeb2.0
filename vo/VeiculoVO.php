@@ -1,14 +1,39 @@
 <?php
 require_once 'SistemaVO.php';
 
-    class ModeloVO extends SistemaVO{
+    class VeiculoVO extends SistemaVO{
 
        
+        private $idVeiculo;
+        private $placa;
+        private $cor;
         private $idCliente;
         private $idModelo;
-        private $Placa;
-        private $Cor;
-               
+        
+        public function setidVeiculo($id){
+            $this->idVeiculo = $id;
+        }
+
+        public function getIdVeiculo(){
+            return $this->idVeiculo;
+        }
+
+        public function setPlaca($placa){
+            $this->placa = ltrim(trim($placa));
+        }
+
+        public function getPlaca(){
+            return $this->placa;
+        }
+
+        public function setCor($cor){
+            $this->cor = ltrim(trim($cor));
+        }
+
+        public function getCor(){
+            return $this->cor;
+        }
+        
         public function setIdCliente($idCliente){
             $this->idCliente = $idCliente;
         }
@@ -24,22 +49,6 @@ require_once 'SistemaVO.php';
         public function getidModelo(){
             return $this->idModelo;
         }
-
-        public function setPlaca($Placa){
-            $this->Placa = ltrim(trim($Placa));
-        }
-
-        public function getPlaca(){
-            return $this->Placa;
-        }
-
-        public function setCor($Cor){
-            $this->Cor = ltrim(trim($Cor));
-        }
-
-        public function getCor(){
-            return $this->Cor;
-        }
-           
+        
     }
 ?>
