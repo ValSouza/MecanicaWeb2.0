@@ -1,38 +1,38 @@
 <?php
-include_once '../../dao/ClienteDAO.php';
+include_once '../../vo/VeiculoVO.php';
 include_once '../../dao/ModeloDAO.php';
 include_once  '../../controller/ClienteCTRL.php';
 include_once  '../../controller/ModeloCTRL.php';
 include_once '../../controller/VeiculoCTRL.php';
-include_once '../../vo/VeiculoVO.php';
-$voVei = new VeiculoVO();
+include_once '../../dao/VeiculoDAO.php';
+
+$dao = new VeiculoDAO();
 
 $ctrlModelo = new ModeloCTRL();
-$ctrlVeiculo = new VeiculoCTRL();
-
-$dao = $ctrlModelo->ConsultarModelo();
-$codCli = '';
+$veic  ='';
 $nome = '';
-$modelo = '';
-$placa = '';
+$codCli = '';
 
 if (isset($_GET['cod']) && isset($_GET['nome'])) {
 
     $codCli = $_GET['cod'];
-    $voVei->setIdCliente($codCli);
     $nome = $_GET['nome'];
-
     
 }
-elseif(isset($_POST['codCli']) &&isset($_POST['nome']) && isset($_POST['modelo']) && isset($_POST['placa'])){
-    $codCli = $_POST['cod'];
-    $nome = $_POST['nome'];
-    $modelo = $_POST['modelo'];
-    $placa = $_POST['placa'];  
-}
+elseif(isset($_POST['btnCadastrar'])){
+    $vo = new VeiculoVO();
+    $ctrlVeiculo = new VeiculoCTRL();
+    
+   $vo->setIdCliente($_POST['codCli']);
+   $vo->setCor($_POST['cor']);
+   $vo->setidModelo($_POST['modelo']);
+   $vo->setPlaca($_POST['placa']);  
 
+    $ctrlVeiculo->CadastrarVeiculos($vo);
+
+}
+$veic = $dao->ConsultarVeiculo($codCli);
 $modelos = $ctrlModelo->ConsultarModelo();
-$veic = $ctrlVeiculo->ConsultarVeiculo($voVei);
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +92,7 @@ $veic = $ctrlVeiculo->ConsultarVeiculo($voVei);
                                     <div class="form-group">
                                         <label>Nome</label>
                                         <input type="hidden" class="form-control" value="<?= $codCli ?>" name="codCli" id="codCli">
-                                        <input type="text" readonly class="form-control" value=" <?= $nome ?>" id="nome" name="nome">
+                                        <input type="text" readonly class="form-control" value="<?= $nome ?>" id="nome" name="nome">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -101,7 +101,7 @@ $veic = $ctrlVeiculo->ConsultarVeiculo($voVei);
                                         <select class="form-control" name="modelo" id="modelo">
                                             <option value="">Selecione</option>
                                             <?php for ($i = 0; $i < count($modelos); $i++) { ?>
-                                                <option value="<?= $modelos[$i]['id_modelo'] ?>"><?= $modelos[$i]['nome_marca'] . $modelos[$i]['nome_modelo'] ?></option>
+                                                <option value="<?= $modelos[$i]['id_modelo'] ?>"><?= $modelos[$i]['nome_marca'] . ' / '. $modelos[$i]['nome_modelo'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -150,7 +150,7 @@ $veic = $ctrlVeiculo->ConsultarVeiculo($voVei);
                                         <tbody>
                                             <?php for($i =0; $i < count($veic); $i++){  ?>    
                                             <tr>
-                                                <td><?= $veic[$i]['nome_marca'] . '/ ' . $veic[$i]['nome_modelo'] ?><td>
+                                                <td><?= $veic[$i]['nome_marca'] . '/ ' . $veic[$i]['nome_modelo'] ?></td>
                                                 <td><?= $veic[$i]['placa_veiculo']?></td>
                                                 <td><?= $veic[$i]['cor_veiculo']?></td>
                                                 <td>

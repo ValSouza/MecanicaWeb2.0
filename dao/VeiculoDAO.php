@@ -49,7 +49,7 @@ class VeiculoDAO extends Conexao{
 
     }
 
-    public function ConsultarVeiculo(VeiculoVO $vo){
+    public function ConsultarVeiculo($idCliente){
         $comando = 'select 
                            tb_veiculo.id_modelo,
                            tb_veiculo.id_veiculo,
@@ -70,8 +70,8 @@ class VeiculoDAO extends Conexao{
                        and 
                            tb_veiculo.id_usuario = ?';  
         $this->sql = $this->conexao->prepare($comando);
-        $this->sql->bindValue(1 , $vo->getIdCliente());
-        $this->sql->bindValue(2, $vo->getIdLogado(UtilCTRL::CodigoUserLogado()));
+        $this->sql->bindValue(1 , $idCliente);
+        $this->sql->bindValue(2, UtilCTRL::CodigoUserLogado());
         
         $this->sql->setFetchMode(PDO::FETCH_ASSOC);
         $this->sql->execute();
