@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/ClienteDAO.php';
 require_once 'UtilCTRL.php';
 
 define('CadastrarCliente', 'CadastrarCliente');
+define('AlterarCliente', 'AlterarCliente');
 
 class ClienteCTRL{
 
@@ -30,6 +31,16 @@ class ClienteCTRL{
        return $dao->ConsultarCliente($nome_pesquisa);
  
      }  
+
+     public function AlterarCliente(ClienteVO $vo){
+         $dao = new ClienteDAO();
+         $vo->setData(UtilCTRL::DataAtual());
+         $vo->setHora(UtilCTRL::HoraAtual());
+         $vo->setFuncao(AlterarCliente);
+         $vo->setidLogado(UtilCTRL::CodigoUserLogado());
+
+         return $dao->AlterarCliente($vo);
+     }
      
 
    

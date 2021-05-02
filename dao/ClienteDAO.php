@@ -6,10 +6,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/controller/UtilCTRL.ph
 
 class ClienteDAO extends Conexao
 {
+     /** @var PDO */
+     private $conexao;
+     /** @var PDOStatement */
+     private $sql;
+    public function __construct()
+    {
+        $conexao = parent::retornaConexao();
+        $sql = new PDOStatement();
+    }
 
     public function CadastrarCliente(ClienteVO $vo)
     {
-        $conexao = parent::retornaConexao();
         $comando_sql = 'insert 
                              into 
                                tb_cliente 
@@ -19,15 +27,14 @@ class ClienteDAO extends Conexao
                                 id_usuario)
                                 values(?,?,?,?)';
 
-        $sql = new PDOStatement();
-        $sql = $conexao->prepare($comando_sql);
-        $sql->bindValue(1, $vo->getNomeCliente());
-        $sql->bindValue(2, $vo->getPhoneCliente());
-        $sql->bindValue(3, $vo->getAddressCliente());
-        $sql->bindValue(4, $vo->getidLogado());
+        $this->sql = $this->conexao->prepare($comando_sql);
+        $this->sql->bindValue(1, $vo->getNomeCliente());
+        $this->sql->bindValue(2, $vo->getPhoneCliente());
+        $this->sql->bindValue(3, $vo->getAddressCliente());
+        $this->sql->bindValue(4, $vo->getidLogado());
 
         try {
-            $sql->execute();
+            $this->sql->execute();
             return 1;
         } catch (Exception $ex) {
             //chamando pelo parent a função gravar erro da VO
@@ -45,7 +52,6 @@ class ClienteDAO extends Conexao
 
     public function ConsultarCliente($nome_pesquisa)
     {
-        $conexao = parent::retornaConexao();
         $comando_sql = 'select 
                             id_cliente,
                             nome_cliente, 
@@ -64,16 +70,53 @@ class ClienteDAO extends Conexao
         $ordenacao = ' order by nome_cliente ';
         $comando_sql .= $ordenacao;
 
-        $sql = new PDOStatement();
-        $sql = $conexao->prepare($comando_sql);
-        $sql->bindValue(1, UtilCTRL::CodigoUserLogado());
+        $this->sql = $this->conexao->prepare($comando_sql);
+        $this->sql->bindValue(1, UtilCTRL::CodigoUserLogado());
         if (trim($nome_pesquisa) != '') {
-            $sql->bindValue(2, '%' . $nome_pesquisa . '%');
+            $this->sql->bindValue(2, '%' . $nome_pesquisa . '%');
         }
 
 
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
-        $sql->execute();
-        return $sql->fetchAll();
+        $this->sql->setFetchMode(PDO::FETCH_ASSOC);
+        $this->sql->execute();
+        return $this->sql->fetchAll();
+    }
+
+    public function AlterarCliente(ClienteVO $vo){
+
+        $comando_sql = 'update 
+                               tb_cliente
+                           set  
+                               nome_cliente = ?,
+                               telefone_cliente = ?, 
+                               endereco_cliente = ?
+                         where 
+                               id_cliente = ? 
+                           and id_usuario = ?';
+
+        $this->sql = $this->conexao->prepare($comando_sql);
+        $this->sql->bindValue(1, $vo->getNomeCliente());
+        $this->sql->bindValue(2, $vo->getPhoneCliente());
+        $this->sql->bindValue(3, $vo->getAddressCliente());
+        $this->sql->bindValue(4, $vo->getIdCliente());
+        $this->sql->bindValue(5, $vo->getidLogado());
+
+        try {
+            $this->sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            parent::GravarErro($ex->getMessage(),
+                               $vo->getidLogado(),
+                               $vo->getFuncao(),
+                               $vo->getHora(),
+                               $vo->getData(),
+                               $vo->getiP());
+            
+            return - 1;
+        }
+        
+
+        return $this->sql->fetchAll();
+
     }
 }
