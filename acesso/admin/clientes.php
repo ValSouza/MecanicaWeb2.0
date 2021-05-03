@@ -1,6 +1,10 @@
 <?php
 require_once '../../controller/ClienteCTRL.php';
 require_once '../../vo/ClienteVO.php';
+$codCli = '';
+$nome = '';
+$tel = '';
+$end = '';
 
 $ctrl = new ClienteCTRL;
 if (isset($_POST['btnCadastrar'])) {
@@ -8,7 +12,20 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setNomeCliente($_POST['nome']);
   $vo->setPhoneCliente($_POST['tel']);
   $vo->setAddressCliente($_POST['end']);
-  $ret = $ctrl->CadastrarCliente($vo);
+  $ctrl->CadastrarCliente($vo);
+} if (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
+  //$vo = new ClienteVO();
+  $codCli = $_GET['cod'];
+  $nome = $_GET['nome'];
+  $tel = $_GET['tel'];
+  $end = $_GET['endereco'];
+  
+  /**  $vo->setIdCliente($codCli);
+  $vo->setNomeCliente($nome);
+  $vo->setPhoneCliente($tel);
+  $vo->setAddressCliente($end);
+  
+  $ctrl->AlterarCliente($vo);*/ 
 }
 //$clientes = $ctrl->ConsultarCliente();
 ?>
@@ -68,13 +85,14 @@ if (isset($_POST['btnCadastrar'])) {
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="nome" placeholder="digite o nome aqui.." name="nome">
+                                        <input type="hidden" class="form-control" value="<?= $codCli ?>" name="codCli" id="codCli">
+                                        <input type="text" class="form-control" value="<?= $nome?>" id="nome" placeholder="digite o nome aqui.." name="nome">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Telefone</label>
-                                        <input type="text" class="form-control" id="tel" placeholder="digite o telefone aqui.." name="tel">
+                                        <input type="text" class="form-control" value="<?= $tel?>" id="tel" placeholder="digite o telefone aqui.." name="tel">
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +100,7 @@ if (isset($_POST['btnCadastrar'])) {
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Endereço</label>
-                                        <input type="text" class="form-control" id="end" placeholder="digite o endereço aqui.." name="end">
+                                        <input type="text" class="form-control" value="<?= $end?>" id="end" placeholder="digite o endereço aqui.." name="end">
                                     </div>
                                 </div>
                             </div>

@@ -12,8 +12,8 @@ class ClienteDAO extends Conexao
      private $sql;
     public function __construct()
     {
-        $conexao = parent::retornaConexao();
-        $sql = new PDOStatement();
+        $this->conexao = parent::retornaConexao();
+        $this->sql = new PDOStatement();
     }
 
     public function CadastrarCliente(ClienteVO $vo)
