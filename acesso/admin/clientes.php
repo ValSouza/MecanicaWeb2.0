@@ -10,6 +10,9 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setPhoneCliente($_POST['tel']);
   $vo->setAddressCliente($_POST['end']);
   $ret = $ctrl->CadastrarCliente($vo);
+
+  header('location: consultar_cliente.php?ret=' . $ret);
+    exit;
 } elseif (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
   $vo = new ClienteVO();
   $codCli = $_GET['cod'];
