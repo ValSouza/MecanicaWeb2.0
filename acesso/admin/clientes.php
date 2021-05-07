@@ -1,10 +1,7 @@
 <?php
 require_once '../../controller/ClienteCTRL.php';
 require_once '../../vo/ClienteVO.php';
-$codCli = '';
-$nome = '';
-$tel = '';
-$end = '';
+
 
 $ctrl = new ClienteCTRL;
 if (isset($_POST['btnCadastrar'])) {
@@ -13,8 +10,8 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setPhoneCliente($_POST['tel']);
   $vo->setAddressCliente($_POST['end']);
   $ret = $ctrl->CadastrarCliente($vo);
-} if (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
-  //$vo = new ClienteVO();
+} elseif (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
+  $vo = new ClienteVO();
   $codCli = $_GET['cod'];
   $nome = $_GET['nome'];
   $tel = $_GET['tel'];
@@ -25,9 +22,14 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setPhoneCliente($tel);
   $vo->setAddressCliente($end);
   
-  $ctrl->AlterarCliente($vo);*/ 
+  $ret = $ctrl->AlterarCliente($vo);*/ 
 }
-//$clientes = $ctrl->ConsultarCliente();
+
+$codCli = '';
+$nome = '';
+$tel = '';
+$end = '';
+
 ?>
 <!DOCTYPE html>
 <html>
