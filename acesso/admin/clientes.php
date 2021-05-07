@@ -12,7 +12,7 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setNomeCliente($_POST['nome']);
   $vo->setPhoneCliente($_POST['tel']);
   $vo->setAddressCliente($_POST['end']);
-  $ctrl->CadastrarCliente($vo);
+  $ret = $ctrl->CadastrarCliente($vo);
 } if (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
   //$vo = new ClienteVO();
   $codCli = $_GET['cod'];
