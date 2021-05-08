@@ -33,6 +33,12 @@ class ClienteCTRL{
      }  
 
      public function AlterarCliente(ClienteVO $vo){
+        if($vo->getNomeCliente()==''||
+           $vo->getPhoneCliente()==''||
+           $vo->getAddressCliente()==''||
+           $vo->getIdCliente()==''){
+            return 0;
+        }
          $dao = new ClienteDAO();
          $vo->setData(UtilCTRL::DataAtual());
          $vo->setHora(UtilCTRL::HoraAtual());
@@ -40,7 +46,7 @@ class ClienteCTRL{
          $vo->setidLogado(UtilCTRL::CodigoUserLogado());
 
          return $dao->AlterarCliente($vo);
-     }
+     } 
      
 
    

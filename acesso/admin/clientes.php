@@ -1,37 +1,48 @@
 <?php
 require_once '../../controller/ClienteCTRL.php';
 require_once '../../vo/ClienteVO.php';
-
-
-$ctrl = new ClienteCTRL;
-if (isset($_POST['btnCadastrar'])) {
-  $vo = new ClienteVO();
-  $vo->setNomeCliente($_POST['nome']);
-  $vo->setPhoneCliente($_POST['tel']);
-  $vo->setAddressCliente($_POST['end']);
-  $ret = $ctrl->CadastrarCliente($vo);
-
-  header('location: consultar_cliente.php?ret=' . $ret);
-    exit;
-} elseif (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
-  $vo = new ClienteVO();
-  $codCli = $_GET['cod'];
-  $nome = $_GET['nome'];
-  $tel = $_GET['tel'];
-  $end = $_GET['endereco'];
-  
-  /**  $vo->setIdCliente($codCli);
-  $vo->setNomeCliente($nome);
-  $vo->setPhoneCliente($tel);
-  $vo->setAddressCliente($end);
-  
-  $ret = $ctrl->AlterarCliente($vo);*/ 
-}
-
 $codCli = '';
 $nome = '';
 $tel = '';
 $end = '';
+
+$ctrl = new ClienteCTRL;
+
+if (isset($_POST['btnCadastrar'])) {
+    $vo = new ClienteVO();
+    $vo->setNomeCliente($_POST['nome']);
+    $vo->setPhoneCliente($_POST['tel']);
+    $vo->setAddressCliente($_POST['end']);
+
+    if ($_POST['codCLi'] == '') {
+        $ret = $ctrl->CadastrarCliente($vo);
+        header('location: consultar_cliente.php?ret=' . $ret);
+        exit;
+    } else {
+        $vo = new ClienteVO();
+        $codCli = $_GET['cod'];
+        $nome = $_GET['nome'];
+        $tel = $_GET['tel'];
+        $end = $_GET['endereco'];
+
+        $vo->setIdCliente($codCli);
+        $vo->setNomeCliente($nome);
+        $vo->setPhoneCliente($tel);
+        $vo->setAddressCliente($end);
+
+        $ret = $ctrl->AlterarCliente($vo);
+
+        header('location: consultar_cliente.php?ret=' . $ret);
+        exit;
+    }
+} elseif (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
+    $codCli = $_GET['cod'];
+    $nome = $_GET['nome'];
+    $tel = $_GET['tel'];
+    $end = $_GET['endereco'];
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -82,7 +93,7 @@ $end = '';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Administre os seus clientes aqui</h3>
+                        <h3 class="card-title"><?= $codCli == '' ? 'Cadastrar ' : 'Alterar ' ?>cliente aqui</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="clientes.php">
@@ -91,13 +102,13 @@ $end = '';
                                     <div class="form-group">
                                         <label>Nome</label>
                                         <input type="hidden" class="form-control" value="<?= $codCli ?>" name="codCli" id="codCli">
-                                        <input type="text" class="form-control" value="<?= $nome?>" id="nome" placeholder="digite o nome aqui.." name="nome">
+                                        <input type="text" class="form-control" value="<?= $nome ?>" id="nome" placeholder="digite o nome aqui.." name="nome">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Telefone</label>
-                                        <input type="text" class="form-control" value="<?= $tel?>" id="tel" placeholder="digite o telefone aqui.." name="tel">
+                                        <input type="text" class="form-control" value="<?= $tel ?>" id="tel" placeholder="digite o telefone aqui.." name="tel">
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +116,7 @@ $end = '';
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Endereço</label>
-                                        <input type="text" class="form-control" value="<?= $end?>" id="end" placeholder="digite o endereço aqui.." name="end">
+                                        <input type="text" class="form-control" value="<?= $end ?>" id="end" placeholder="digite o endereço aqui.." name="end">
                                     </div>
                                 </div>
                             </div>
