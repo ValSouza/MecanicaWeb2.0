@@ -1,4 +1,5 @@
 <?php
+
 require_once 'SistemaVO.php';
 
     class MarcaVO extends SistemaVO{

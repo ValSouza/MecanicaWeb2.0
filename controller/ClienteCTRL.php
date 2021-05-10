@@ -4,7 +4,7 @@ require_once 'UtilCTRL.php';
 
 define('CadastrarCliente', 'CadastrarCliente');
 define('AlterarCliente', 'AlterarCliente');
-
+define('ExcluirCliente', 'ExcluirCliente');
 class ClienteCTRL{
 
     public function CadastrarCliente(ClienteVO $vo){
@@ -44,11 +44,19 @@ class ClienteCTRL{
          $vo->setHora(UtilCTRL::HoraAtual());
          $vo->setFuncao(AlterarCliente);
          $vo->setidLogado(UtilCTRL::CodigoUserLogado());
-
          return $dao->AlterarCliente($vo);
      } 
-     
 
-   
+     public function ExcluirCliente($id)
+    {
+        $dao = new ClienteDAO();
+         $vo = new ClienteVO();
+ 
+         $vo->setData(UtilCTRL::DataAtual());
+         $vo->setHora(UtilCTRL::HoraAtual());
+         $vo->setFuncao(ExcluirCliente);
+         $vo->setidLogado(UtilCTRL::CodigoUserLogado());
+         return $dao->ExcluirCliente($id,$vo);
+    }      
     
 }

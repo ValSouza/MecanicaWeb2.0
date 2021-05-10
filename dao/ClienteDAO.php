@@ -15,6 +15,17 @@ class ClienteDAO extends Conexao
         $this->conexao = parent::retornaConexao();
         $this->sql = new PDOStatement();
     }
+    private function ColetarErro(SistemaVO $vo, $ex)
+    {
+        parent::GravarErro(
+            $ex->getMessage(), //getmessage é o erro apresentado
+            $vo->getidLogado(),
+            $vo->getFuncao(),
+            $vo->getHora(),
+            $vo->getData(),
+            $vo->getiP()
+        );
+    }
 
     public function CadastrarCliente(ClienteVO $vo)
     {
@@ -119,4 +130,21 @@ class ClienteDAO extends Conexao
         return $this->sql->fetchAll();
 
     }
+
+    public function ExcluirCliente($id, SistemaVO $vo)
+    {
+        $comando = ' delete from tb_cliente where id_cliente=?';
+        $this->sql = $this->conexao->prepare($comando);
+        $this->sql->bindValue(1, $id);
+        try {
+            $this->sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            //chamando pelo parent a função gravar erro da VO
+            $this->ColetarErro($vo, $ex);
+            return -2;
+        }
+    }
+
+
 }

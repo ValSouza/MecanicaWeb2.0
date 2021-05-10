@@ -1,15 +1,23 @@
 <?php
 require_once '../../controller/ClienteCTRL.php';
-
-$nome_pesquisa='';
-
+require_once '../../vo/ClienteVO.php';
+$nome_pesquisa = '';
 $ctrl = new ClienteCTRL;
+$vo = new ClienteVO();
+
 
 if (isset($_POST['btnBuscar'])) {
   $nome_pesquisa = $_POST['nome_pesquisa'];
-
 }
-$ret = $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
+
+if (isset($_POST['btnExcluir'])) {
+  $id = $_POST['id_item'];
+  $ret = $ctrl->ExcluirCliente($id);
+}
+
+ $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -59,76 +67,82 @@ $ret = $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
 
         <!-- Default box -->
         <div class="card">
-        <form method="POST" action="consultar_cliente.php">
-          <!-- /.row -->
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Clientes cadastrados</h3>
+          <form method="POST" action="consultar_cliente.php">
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Clientes cadastrados</h3>
 
-                  <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 300px;">
-                      <input type="text" name="nome_pesquisa" value="<?= $nome_pesquisa ?>"class="form-control float-right" placeholder="digite o nome do cliente...">
+                    <div class="card-tools">
+                      <div class="input-group input-group-sm" style="width: 300px;">
+                        <input type="text" name="nome_pesquisa" value="<?= $nome_pesquisa ?>" class="form-control float-right" placeholder="digite o nome do cliente...">
 
-                      <div class="input-group-append">
-                        <button type="submit" name="btnBuscar" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        <div class="input-group-append">
+                          <button type="submit" name="btnBuscar" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-        </form>      
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>Cliente</th>
-                        <th>Telefone</th>
-                        <th>Endereço</th>
-                        <th>Ação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php for ($i=0; $i <count($clientes) ; $i++)  { ?>
-                          <tr>
-                          <td><?= $clientes[$i]['nome_cliente']?></td>
-                          <td><?= $clientes[$i]['telefone_cliente']?></td>
-                          <td><?= $clientes[$i]['endereco_cliente']?></td>
-                        <td>
-                          <a href="clientes.php?cod=<?= $clientes[$i]['id_cliente'] ?>&nome=<?= $clientes[$i]['nome_cliente'] ?>&tel=<?=$clientes[$i]['telefone_cliente'] ?>&endereco=<?=$clientes[$i]['endereco_cliente'] ?>" class="btn btn-outline-warning btn-xs">Alterar</a>
-                          <a href="cliente_veiculos.php?nome=<?= $clientes[$i]['nome_cliente']?>&cod=<?= $clientes[$i]['id_cliente']?>" class="btn btn-outline-info btn-xs">Veiculos</a>
-                          <a href="#" class="btn btn-outline-primary btn-xs">Atender</a>
-                          <a href="#" class="btn btn-outline-success btn-xs">Ver atendimento</a>
-                        </td>
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
+          </form>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Telefone</th>
+                  <th>Endereço</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php for ($i = 0; $i < count($clientes); $i++) { ?>
+                  <tr>
+                    <td><?= $clientes[$i]['nome_cliente'] ?></td>
+                    <td><?= $clientes[$i]['telefone_cliente'] ?></td>
+                    <td><?= $clientes[$i]['endereco_cliente'] ?></td>
+                    <td>
+                      <a href="clientes.php?cod=<?= $clientes[$i]['id_cliente'] ?>&nome=<?= $clientes[$i]['nome_cliente'] ?>&tel=<?= $clientes[$i]['telefone_cliente'] ?>&endereco=<?= $clientes[$i]['endereco_cliente'] ?>" class="btn btn-outline-warning btn-xs">Alterar</a>
+                      <a href="#" class="btn btn-outline-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $clientes[$i]['id_cliente'] ?>','<?= $clientes[$i]['nome_cliente'] ?>')">Excluir</a>
+                      <a href="cliente_veiculos.php?nome=<?= $clientes[$i]['nome_cliente'] ?>&cod=<?= $clientes[$i]['id_cliente'] ?>" class="btn btn-outline-info btn-xs">Veiculos</a>
+                      <a href="#" class="btn btn-outline-primary btn-xs">Atender</a>
+                      <a href="#" class="btn btn-outline-success btn-xs">Ver atendimento</a>
+                    </td>
+                  </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+            <form method="POST" action="consultar_cliente.php">
+              <?php
+              include_once '../../template/_modal_excluir.php';
+              ?>
+            </form>
           </div>
-          <!-- /.row -->
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
-
-      </section>
-      <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-    <?php
-    include_once '../../template/_footer.php';
-    ?>
+  </div>
+  <!-- /.row -->
+  <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
 
-    <!-- jQuery -->
-    <?php
-    include_once '../../template/_scripts.php';
-    include_once '../../template/_msg.php';
-    ?>
+  </section>
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <?php
+  include_once '../../template/_footer.php';
+  ?>
+
+  <!-- jQuery -->
+  <?php
+   include_once '../../template/_scripts.php';
+   include_once '../../template/_msg.php';
+  ?>
 </body>
 
 </html>

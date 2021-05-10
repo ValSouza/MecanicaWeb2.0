@@ -1,0 +1,18 @@
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_cliente1` FOREIGN KEY (`id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 08/05/2021 às 18:31
+Id do usuario logado: 1
+Função chamada: ExcluirCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_cliente1` FOREIGN KEY (`id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 10/05/2021 às 12:55
+Id do usuario logado: 1
+Função chamada: ExcluirCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_cliente1` FOREIGN KEY (`id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 10/05/2021 às 12:55
+Id do usuario logado: 1
+Função chamada: ExcluirCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
