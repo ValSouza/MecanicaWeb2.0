@@ -4,6 +4,7 @@ require_once 'UtilCTRL.php';
 
 define('CadastrarServico', 'CadastrarServico');
 define('ExcluirServico', 'ExcluirServico');
+define('AlterarServico', 'AlterarServico');
 
 class ServicoCTRL{
 
@@ -38,6 +39,22 @@ class ServicoCTRL{
         $voSistema->setFuncao(ExcluirServico);
         $voSistema->setidLogado(UtilCTRL::CodigoUserLogado());
         return $dao->ExcluirServico($id,$voSistema);
+    }
+    public function AlterarServico(ServicoVO $vo)
+    {
+        if (
+            $vo->getnomeServico() == '' 
+        ) {
+            return 0;
+        }
+        $dao = new ServicoDAO();
+
+        $vo->setData(UtilCTRL::DataAtual());
+        $vo->setHora(UtilCTRL::HoraAtual());
+        $vo->setFuncao(AlterarServico);
+        $vo->setidLogado(UtilCTRL::CodigoUserLogado());
+
+        return $dao->AlterarServico($vo);
     }
 
    

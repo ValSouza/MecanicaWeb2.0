@@ -57,6 +57,37 @@ class ModeloDAO extends Conexao
         }
     }
 
+    public function AlterarModelo(ModeloVO $vo)
+    {
+        $comando = 'update
+                         tb_modelo
+                      set
+                         nome_modelo=?,   
+                         id_marca=?
+                      where  
+                         id_modelo=?';
+        $this->sql = $this->conexao->prepare($comando);
+        $this->sql->bindValue(1, $vo->getNomeModelo());
+        $this->sql->bindValue(2, $vo->getidMarca());
+        $this->sql->bindValue(3, $vo->getIdModelo());
+
+        try {
+            $this->sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            //chamando pelo parent a função gravar erro da VO
+            parent::GravarErro(
+                $ex->getMessage(), //getmessage é o erro apresentado
+                $vo->getidLogado(),
+                $vo->getFuncao(),
+                $vo->getHora(),
+                $vo->getData(),
+                $vo->getiP()
+            );
+            return -1;
+        }
+    }
+
     public function ConsultarModelo()
     {
 
@@ -64,13 +95,14 @@ class ModeloDAO extends Conexao
                                id_modelo,
                                nome_modelo,
                                tb_modelo.id_marca,
-                               nome_marca 
+                               tb_marca.nome_marca 
                           from 
                                tb_modelo 
-                    inner join 
-                               tb_marca on tb_modelo.id_marca = tb_marca.id_marca 
+                    inner join tb_marca 
+                               on tb_modelo.id_marca = tb_marca.id_marca 
                          where 
-                               tb_modelo.id_usuario = ? order by nome_marca, nome_modelo';
+                               tb_modelo.id_usuario = ? 
+                        order by nome_marca';
 
         $this->sql = $this->conexao->prepare($comando);
         $this->sql->bindValue(1, UtilCTRL::CodigoUserLogado());

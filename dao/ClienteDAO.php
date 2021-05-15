@@ -102,15 +102,13 @@ class ClienteDAO extends Conexao
                                telefone_cliente = ?, 
                                endereco_cliente = ?
                          where 
-                               id_cliente = ? 
-                           and id_usuario = ?';
+                               id_cliente = ?';
 
         $this->sql = $this->conexao->prepare($comando_sql);
         $this->sql->bindValue(1, $vo->getNomeCliente());
         $this->sql->bindValue(2, $vo->getPhoneCliente());
         $this->sql->bindValue(3, $vo->getAddressCliente());
         $this->sql->bindValue(4, $vo->getIdCliente());
-        $this->sql->bindValue(5, $vo->getidLogado());
 
         try {
             $this->sql->execute();

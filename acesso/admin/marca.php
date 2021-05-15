@@ -7,9 +7,14 @@ if (isset($_POST['btnCadastrar'])) {
   $vo = new MarcaVO();
   $ctrl = new MarcaCTRL();
   $vo->setnomeMarca($_POST['nome']);
-
   $ret = $ctrl->CadastrarMarca($vo);
-} else if (isset($_POST['btnExcluir'])) {
+}else if(isset($_POST['btnAlterar'])) {  
+  $vo = new MarcaVO();
+  $vo->setidMarca($_POST['id_marca']);
+  $vo->setnomeMarca($_POST['nome_marca']); 
+  $ret= $ctrl->AlterarMarca($vo);
+}
+else if (isset($_POST['btnExcluir'])) {
   $id = $_POST['id_item'];
   $ret = $ctrl->ExcluirMarca($id);
 }
@@ -117,8 +122,8 @@ $marcas = $ctrl->ConsultarMarca();
                         <tr>
                           <td><?= $marcas[$i]['nome_marca'] ?></td>
                           <td>
-                            <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $marcas[$i]['id_marca'] ?>','<?= $marcas[$i]['nome_marca'] ?>')">Excluir</a>
+                          <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-marca" onclick="CarregarModalAlterarMarca('<?= $marcas[$i]['id_marca'] ?>','<?= $marcas[$i]['nome_marca'] ?>')">Alterar</a>
+                          <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $marcas[$i]['id_marca'] ?>','<?= $marcas[$i]['nome_marca'] ?>')">Excluir</a>
                           </td>
                         </tr>
                       <?php } ?>
@@ -127,6 +132,7 @@ $marcas = $ctrl->ConsultarMarca();
                   <form method="POST" action="marca.php">
                     <?php
                     include_once '../../template/_modal_excluir.php';
+                    include_once 'modal/_modal_alterar_marca.php';
                     ?>
                   </form>
                 </div>

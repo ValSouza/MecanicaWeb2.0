@@ -13,9 +13,16 @@ if (isset($_POST['btnBuscar'])) {
 if (isset($_POST['btnExcluir'])) {
   $id = $_POST['id_item'];
   $ret = $ctrl->ExcluirCliente($id);
+} else if (isset($_POST['btnAlterar'])) {
+  $vo = new ClienteVO();
+  $vo->setNomeCliente($_POST['nome_cliente']);
+  $vo->setPhoneCliente($_POST['tel_cliente']);
+  $vo->setAddressCliente($_POST['end_cliente']);
+  $vo->setIdCliente($_POST['id_cliente']);
+  $ret = $ctrl->AlterarCliente($vo);
 }
 
- $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
+$clientes = $ctrl->ConsultarCliente($nome_pesquisa);
 
 
 ?>
@@ -104,7 +111,7 @@ if (isset($_POST['btnExcluir'])) {
                     <td><?= $clientes[$i]['telefone_cliente'] ?></td>
                     <td><?= $clientes[$i]['endereco_cliente'] ?></td>
                     <td>
-                      <a href="clientes.php?cod=<?= $clientes[$i]['id_cliente'] ?>&nome=<?= $clientes[$i]['nome_cliente'] ?>&tel=<?= $clientes[$i]['telefone_cliente'] ?>&endereco=<?= $clientes[$i]['endereco_cliente'] ?>" class="btn btn-outline-warning btn-xs">Alterar</a>
+                      <a href="#" class="btn btn-outline-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-cliente" onclick="CarregarModalAlterarCliente('<?= $clientes[$i]['id_cliente'] ?>','<?= $clientes[$i]['nome_cliente'] ?>','<?= $clientes[$i]['telefone_cliente'] ?>','<?= $clientes[$i]['endereco_cliente'] ?>')">Alterar</a>
                       <a href="#" class="btn btn-outline-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $clientes[$i]['id_cliente'] ?>','<?= $clientes[$i]['nome_cliente'] ?>')">Excluir</a>
                       <a href="cliente_veiculos.php?nome=<?= $clientes[$i]['nome_cliente'] ?>&cod=<?= $clientes[$i]['id_cliente'] ?>" class="btn btn-outline-info btn-xs">Veiculos</a>
                       <a href="#" class="btn btn-outline-primary btn-xs">Atender</a>
@@ -117,6 +124,7 @@ if (isset($_POST['btnExcluir'])) {
             <form method="POST" action="consultar_cliente.php">
               <?php
               include_once '../../template/_modal_excluir.php';
+              include_once 'modal/_modal_alterar_cliente.php';
               ?>
             </form>
           </div>
@@ -140,8 +148,8 @@ if (isset($_POST['btnExcluir'])) {
 
   <!-- jQuery -->
   <?php
-   include_once '../../template/_scripts.php';
-   include_once '../../template/_msg.php';
+  include_once '../../template/_scripts.php';
+  include_once '../../template/_msg.php';
   ?>
 </body>
 

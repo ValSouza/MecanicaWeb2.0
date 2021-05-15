@@ -4,6 +4,7 @@ require_once 'UtilCTRL.php';
 
 define('CadastrarModelo', 'CadastrarModelo');
 define('ExcluirModelo', 'ExcluirModelo');
+define('AlterarModelo', 'AlterarModelo');
 class ModeloCTRL
 {
 
@@ -23,6 +24,23 @@ class ModeloCTRL
         $vo->setidLogado(UtilCTRL::CodigoUserLogado());
 
         return $dao->CadastrarModelo($vo);
+    }
+
+    public function AlterarModelo(ModeloVO $vo)
+    {
+        if (
+            $vo->getNomeModelo() == '' 
+        ) {
+            return 0;
+        }
+        $dao = new ModeloDAO();
+
+        $vo->setData(UtilCTRL::DataAtual());
+        $vo->setHora(UtilCTRL::HoraAtual());
+        $vo->setFuncao(AlterarModelo);
+        $vo->setidLogado(UtilCTRL::CodigoUserLogado());
+
+        return $dao->AlterarModelo($vo);
     }
 
     public function ConsultarModelo()

@@ -16,3 +16,33 @@ Data: 10/05/2021 às 12:55
 Id do usuario logado: 1
 Função chamada: ExcluirCliente
 Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 22:31
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 22:33
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 22:59
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 23:00
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 23:03
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
