@@ -32,7 +32,11 @@ class ServicoDAO extends Conexao
     public function CadastrarServico(ServicoVO $vo)
     {
 
-        $comando = 'insert into tb_servico (nome_servico, id_usuario) values (?,?)';
+        $comando = 'insert 
+                         into tb_servico (
+                             nome_servico,
+                              id_usuario) 
+                         values (?,?)';
         $this->sql = new PDOStatement();
         $this->sql = $this->conexao->prepare($comando);
         $this->sql->bindValue(1, $vo->getnomeServico());

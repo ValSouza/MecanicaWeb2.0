@@ -26,11 +26,12 @@ class VeiculoDAO extends Conexao{
                                     values
                                            (?,?,?,?,?)';
         $this->sql = $this->conexao->prepare($comando);
-        $this->sql->bindValue(1 , $vo->getPlaca());
-        $this->sql->bindValue(2 , $vo->getCor());
-        $this->sql->bindValue(3 , $vo->getIdCliente());
-        $this->sql->bindValue(4 , $vo->getidModelo());
-        $this->sql->bindValue(5 , $vo->getidLogado(UtilCTRL::CodigoUserLogado()));
+        $i=1;
+        $this->sql->bindValue($i++ , $vo->getPlaca());
+        $this->sql->bindValue($i++ , $vo->getCor());
+        $this->sql->bindValue($i++ , $vo->getIdCliente());
+        $this->sql->bindValue($i++ , $vo->getidModelo());
+        $this->sql->bindValue($i++ , $vo->getidLogado());
 
         try {
             $this->sql->execute();
@@ -47,6 +48,40 @@ class VeiculoDAO extends Conexao{
         }
 
 
+    }
+
+    public function AlterarVeiculo(VeiculoVO $vo)
+    {
+
+        $comando = 'update
+                            tb_veiculo 
+                           set
+                                 placa_veiculo=?,
+                                 cor_veiculo=?,
+                                 id_modelo=?
+                            where     
+                                  id_veiculo=?';
+        $this->sql = $this->conexao->prepare($comando);
+        $this->sql->bindValue(1, $vo->getPlaca());
+        $this->sql->bindValue(2, $vo->getCor());
+        $this->sql->bindValue(3, $vo->getidModelo());
+        $this->sql->bindValue(4, $vo->getIdVeiculo());
+
+        try {
+            $this->sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            //chamando pelo parent a função gravar erro da VO
+            parent::GravarErro(
+                $ex->getMessage(), //getmessage é o erro apresentado
+                $vo->getidLogado(),
+                $vo->getFuncao(),
+                $vo->getHora(),
+                $vo->getData(),
+                $vo->getiP()
+            );
+            return -1;
+        }
     }
 
     public function ConsultarVeiculo($idCliente){
