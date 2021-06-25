@@ -33,6 +33,7 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
 }else if(isset($_POST['btnAlterar'])) {  
     $nome=($_POST['nome_cli']);
     $cod=($_POST['id_cli']);
+    
     $vo = new VeiculoVO();
     $vo->setIdCliente($cod);
     $vo->setPlaca($_POST['placa_veic']);

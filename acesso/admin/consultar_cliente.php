@@ -114,7 +114,7 @@ $clientes = $ctrl->ConsultarCliente($nome_pesquisa);
                       <a href="#" class="btn btn-outline-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-cliente" onclick="CarregarModalAlterarCliente('<?= $clientes[$i]['id_cliente'] ?>','<?= $clientes[$i]['nome_cliente'] ?>','<?= $clientes[$i]['telefone_cliente'] ?>','<?= $clientes[$i]['endereco_cliente'] ?>')">Alterar</a>
                       <a href="#" class="btn btn-outline-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $clientes[$i]['id_cliente'] ?>','<?= $clientes[$i]['nome_cliente'] ?>')">Excluir</a>
                       <a href="cliente_veiculos.php?nome=<?= $clientes[$i]['nome_cliente'] ?>&cod=<?= $clientes[$i]['id_cliente'] ?>" class="btn btn-outline-info btn-xs">Veiculos</a>
-                      <a href="#" class="btn btn-outline-primary btn-xs">Atender</a>
+                      <a href="atendimento.php?nome=<?= $clientes[$i]['nome_cliente'] ?>&cod=<?= $clientes[$i]['id_cliente'] ?>" class="btn btn-outline-primary btn-xs">Atender</a>
                       <a href="#" class="btn btn-outline-success btn-xs">Ver atendimento</a>
                     </td>
                   </tr>
