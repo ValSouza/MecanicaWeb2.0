@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/VeiculoDAO.php';
 
 define('CadastrarVeiculos', 'CadastrarVeiculos');
 define('AlterarVeiculos', 'AlterarVeiculos');
-
+define('ExcluirVeiculos', 'ExcluirVeiculos');
 class VeiculoCTRL
 {
 
@@ -35,7 +35,6 @@ class VeiculoCTRL
         if (
             $vo->getPlaca() == '' ||
             $vo->getCor() == '' ||
-            $vo->getIdCliente() == '' ||
             $vo->getIdModelo() == ''
         ) {
             return 0;
@@ -55,5 +54,15 @@ class VeiculoCTRL
     {
         $dao = new VeiculoDAO();
         return $dao->ConsultarVeiculo($vo);
+    }
+    public function ExcluirVeiculo($id){
+        $dao=new VeiculoDAO();
+        $voSistema= new VeiculoVO();
+        
+        $voSistema->setData(UtilCTRL::DataAtual());
+        $voSistema->setHora(UtilCTRL::HoraAtual());
+        $voSistema->setFuncao(ExcluirVeiculos);
+        $voSistema->setidLogado(UtilCTRL::CodigoUserLogado());
+        return $dao->ExcluirVeiculo($id,$voSistema);
     }
 }

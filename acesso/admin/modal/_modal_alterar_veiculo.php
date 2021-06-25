@@ -10,12 +10,13 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" id="id_veic" name="id_veic">
+                <input type="hidden" id="id_cli" name="id_cli">
 
                 <div class="form_grup">
                     <label>Nome</label>
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        <input value="<?= $nome ?>" id="nome_veic" name="nome_veic" readonly class="form-control">
+                        <input id="nome_cli" name="nome_cli" value="<?= $nome ?>"  readonly class="form-control">
                     </div>
                 </div>
                 
@@ -40,7 +41,7 @@
                 <div class="form-group">
                     <label>Modelo</label>
 
-                    <select class="form-control" id="modelo_veic" name="modelo_veic">
+                    <select class="form-control" id="modelo_veic" name="modelo_veic">                    
                         <option value="Selecione"></option>
                         <?php for ($i = 0; $i < count($modelos); $i++) { ?>
                             <option value="<?= $modelos[$i]['id_modelo'] ?>"><?= $modelos[$i]['nome_modelo'] ?>

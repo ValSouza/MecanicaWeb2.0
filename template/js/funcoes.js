@@ -30,9 +30,10 @@ function CarregarModalAlterarFuncionario(id,nome,tel,end) {
     $("#tel_func").val(tel);
     $("#end_func").val(end);        
 }
-function CarregarModalAlterarVeiculo(id,cor,placa,modelo) {
+function CarregarModalAlterarVeiculo(id,cor,placa,modelo,idcli) {
     $("#id_veic").val(id);
     $("#cor_veic").val(cor);    
     $("#placa_veic").val(placa);
-    $("#modelo_veic").val(modelo);        
+    $("#modelo_veic").val(modelo);
+    $("#id_clie").val(idcli);         
 }

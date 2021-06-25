@@ -30,7 +30,30 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
 
     $veic = $ctrl->ConsultarVeiculo($vo);
     $modelos = $ctrlModelo->ConsultarModelo();
-}
+}else if(isset($_POST['btnAlterar'])) {  
+    $nome=($_POST['nome_cli']);
+    $cod=($_POST['id_cli']);
+    $vo = new VeiculoVO();
+    $vo->setIdCliente($cod);
+    $vo->setPlaca($_POST['placa_veic']);
+    $vo->setCor($_POST['cor_veic']);
+    $vo->setidVeiculo($_POST['id_veic']);
+    $vo->setidModelo($_POST['modelo_veic']);
+
+    $ret= $ctrl->AlterarVeiculo($vo);
+    
+    $veic = $ctrl->ConsultarVeiculo($vo);
+    $modelos = $ctrlModelo->ConsultarModelo();
+  
+  }
+
+else if (isset($_POST['btnExcluir'])) {
+   
+    $id = $_POST['id_item'];
+    $ret = $ctrl->ExcluirVeiculo($id);
+    header('location: consultar_cliente.php?ret=' . $ret);
+        exit;
+  }
 
 
 ?>
@@ -155,8 +178,8 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
                                                     <td><?= $veic[$i]['placa_veiculo'] ?></td>
                                                     <td><?= $veic[$i]['cor_veiculo'] ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-veiculo" onclick="CarregarAlterarVeiculo('<?= $veic[$i]['id_veiculo'] ?>','<?= $veic[$i]['cor_veiculo'] ?>','<?= $veic[$i]['placa_veiculo'] ?>','<?= $veic[$i]['id_modelo'] ?>')">Alterar</a>
-                                                        <a href="#" class="btn btn-danger btn-xs">Excluir</a>
+                                                        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-veiculo" onclick="CarregarModalAlterarVeiculo('<?= $veic[$i]['id_veiculo'] ?>','<?= $veic[$i]['cor_veiculo'] ?>','<?= $veic[$i]['placa_veiculo'] ?>','<?= $veic[$i]['id_modelo'] ?>','<?= $veic[$i]['id_cliente'] ?>')">Alterar</a>                                                       
+                                                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $veic[$i]['id_veiculo'] ?>','<?= $veic[$i]['placa_veiculo'] ?>')">Excluir</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
