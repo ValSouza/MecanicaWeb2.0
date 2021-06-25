@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/VeiculoDAO.php';
 require_once 'UtilCTRL.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/dao/VeiculoDAO.php';
 
 define('CadastrarVeiculos', 'CadastrarVeiculos');
 define('AlterarVeiculos', 'AlterarVeiculos');
@@ -18,7 +18,9 @@ class VeiculoCTRL
         ) {
             return 0;
         }
+
         $dao = new VeiculoDAO();
+        
         $vo->setData(UtilCTRL::DataAtual());
         $vo->setHora(UtilCTRL::HoraAtual());
         $vo->setFuncao(CadastrarVeiculos);

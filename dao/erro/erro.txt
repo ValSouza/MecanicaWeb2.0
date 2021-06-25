@@ -208,3 +208,45 @@ Data:  às
 Id do usuario logado: 
 Função chamada: 
 Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_cliente1' in 'field list'
+Data: 24/06/2021 às 14:22
+Id do usuario logado: 1
+Função chamada: CadastrarCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_cliente1' in 'field list'
+Data: 24/06/2021 às 14:23
+Id do usuario logado: 1
+Função chamada: CadastrarCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6

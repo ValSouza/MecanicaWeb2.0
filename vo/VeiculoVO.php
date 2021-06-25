@@ -43,7 +43,7 @@ require_once 'SistemaVO.php';
         }
 
         public function setidModelo($idModelo){
-            $this->idModelo = ltrim(trim($idModelo));
+            $this->idModelo = $idModelo;
         }
 
         public function getidModelo(){

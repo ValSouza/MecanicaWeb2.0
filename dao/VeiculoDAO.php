@@ -3,6 +3,7 @@
 require_once 'Conexao.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/MecanicaWeb2.0/controller/UtilCTRL.php';
 
+
 class VeiculoDAO extends Conexao{
 
     /** @var PDO */
@@ -39,12 +40,12 @@ class VeiculoDAO extends Conexao{
 
         } catch (Exception $ex) {
             parent::GravarErro($ex->getMessage(),
-                               $vo->getidLogado(UtilCTRL::CodigoUserLogado()),
+                               $vo->getidLogado(),
                                $vo->getFuncao(),
                                $vo->getHora(),
                                $vo->getData(),
                                $vo->getiP());
-                               return -1;
+            return -1;
         }
 
 
@@ -84,7 +85,7 @@ class VeiculoDAO extends Conexao{
         }
     }
 
-    public function ConsultarVeiculo($idCliente){
+    public function ConsultarVeiculo(VeiculoVO $vo){
         $comando = 'select 
                            tb_veiculo.id_modelo,
                            tb_veiculo.id_veiculo,
@@ -105,7 +106,7 @@ class VeiculoDAO extends Conexao{
                        and 
                            tb_veiculo.id_usuario = ?';  
         $this->sql = $this->conexao->prepare($comando);
-        $this->sql->bindValue(1 , $idCliente);
+        $this->sql->bindValue(1 , $vo->getIdCliente());
         $this->sql->bindValue(2, UtilCTRL::CodigoUserLogado());
         
         $this->sql->setFetchMode(PDO::FETCH_ASSOC);

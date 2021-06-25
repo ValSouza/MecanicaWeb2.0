@@ -1,16 +1,18 @@
 <?php
-include_once '../../vo/VeiculoVO.php';
+
 include_once  '../../controller/ModeloCTRL.php';
 include_once '../../controller/VeiculoCTRL.php';
-
-
-$ctrl = new VeiculoDAO();
+include_once '../../vo/VeiculoVO.php';
+$ctrl = new VeiculoCTRL();
 $ctrlModelo = new ModeloCTRL();
 
 if (isset($_GET['cod']) && isset($_GET['nome'])) {
+    $vo = new VeiculoVO();
     $cod = $_GET['cod'];
     $nome = $_GET['nome'];
-    $veic = $ctrl->ConsultarVeiculo($cod);
+    $vo->setIdCliente($cod);
+    $veic = $ctrl->ConsultarVeiculo($vo);
+
     $modelos = $ctrlModelo->ConsultarModelo();
 } elseif (isset($_POST['btnCadastrar'])) {
     $cod = $_POST['cod'];
@@ -26,7 +28,7 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
     $vo->setidModelo($modelo);
     $ret = $ctrl->CadastrarVeiculos($vo);
 
-    $veic = $ctrl->ConsultarVeiculo($cod);
+    $veic = $ctrl->ConsultarVeiculo($vo);
     $modelos = $ctrlModelo->ConsultarModelo();
 }
 
@@ -160,7 +162,7 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
                                             <?php } ?>
                                         </tbody>
                                     </table>
-                                    <form method="POST" action="clientes_veiculos.php">
+                                    <form method="POST" action="cliente_veiculos.php">
                                         <?php
                                         include_once '../../template/_modal_excluir.php';
                                         include_once '/modal/_modal_alterar_veiculo.php';

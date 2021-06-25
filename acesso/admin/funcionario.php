@@ -21,7 +21,9 @@ else if(isset($_POST['btnAlterar'])) {
   $vo->setNomeStaff($_POST['nome_func']); 
   $vo->setPhoneStaff($_POST['tel_func']); 
   $vo->setSddressStaff($_POST['end_func']);
-  $vo->setSituation($situacao) ? '1' : '0';
+  
+  $situacao = isset($_POST['situacao']);
+  $vo->setSituation($situacao)? '1' : '0';
   $ret= $ctrl->AlterarFuncionario($vo);
 }
 else if (isset($_POST['btnExcluir'])) {
@@ -111,7 +113,7 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                       <div class="form-check">
                         <div class="custom-control custom-checkbox">
                           <label>
-                            <input type="checkbox" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?> />Ativo
+                          <input type="checkbox" class="form-check-input" id="situacao" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?> />Ativo
                           </label>
                         </div>
                       </div>
