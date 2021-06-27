@@ -9,6 +9,11 @@ class AtendimentoVO extends SistemaVO
     private $idUsuario;
     private $IdVeiculo;
     private $idCliente;
+    private $Valor;
+    private $idFuncionario;
+    private $idServico;
+    private $idAtemdimento;
+
 
     public function setidVenda($id)
     {
@@ -62,6 +67,43 @@ class AtendimentoVO extends SistemaVO
     {
         return $this->idCliente;
     }
+
+    public function setValore($Valor)
+    {
+        $this->Valor = trim($Valor);
+    }
+    public function getValor()
+    {
+        return $this->Valor;
+    }
+    
+    public function setidFuncionario($idFuncionario)
+    {
+        $this->idFuncionario = trim($idFuncionario);
+    }
+    public function getidFuncionario()
+    {
+        return $this->idFuncionario;
+    }
+
+    public function setidServico($idServico)
+    {
+        $this->idServico = trim($idServico);
+    }
+    public function getidServico()
+    {
+        return $this->idServico;
+    }
+
+    public function setidAtendimento($idAtendimento)
+    {
+        $this->idAtendimento = trim($idAtendimento);
+    }
+    public function getidAtendimento()
+    {
+        return $this->idAtendimento;
+    }
+
 
  
     
