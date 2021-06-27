@@ -33,12 +33,10 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
     $cod = $_POST['cod'];
     $nome = $_POST['nome'];
     $modelo = $_POST['modelo'];
-    $placa = $_POST['placa'];
-    $cor = $_POST['cor'];
+    
 
     $vo = new VeiculoVO();
-    $vo->setPlaca($placa);
-    $vo->setCor($cor);
+    
     $vo->setIdCliente($cod);
     $vo->setidModelo($modelo);
     $ret = $ctrl->CadastrarVeiculos($vo);
@@ -50,8 +48,7 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
 
     $vo = new VeiculoVO();
     $vo->setIdCliente($cod);
-    $vo->setPlaca($_POST['placa_veic']);
-    $vo->setCor($_POST['cor_veic']);
+   
     $vo->setidVeiculo($_POST['id_veic']);
     $vo->setidModelo($_POST['modelo_veic']);
 
@@ -238,7 +235,7 @@ if (isset($_GET['cod']) && isset($_GET['nome'])) {
                                                 <td><?= $itens[$i]['nome_servico'] ?></td>
                                                 <td><?= $itens[$i]['valor_item'] ?></td>
                                                 <td>
-                                                    <a href="atender.php?id_item=<?= $itens[$i]['id_item'] ?>&codVenda=<?= $codVenda ?>&cod=<?= $cod ?>&nome=<?= $nome ?>&data=<?= $data ?>&veiculos=<?= $veiculo ?>&obs=<?= $obs ?>&servico=<?= $servico ?>&funcionario=<?= $funcionario ?>" class="btn btn-danger btn-xs">Excluir</a>
+                                                    <a href="atendimento.php?id_item=<?= $itens[$i]['id_item'] ?>&codVenda=<?= $codVenda ?>&cod=<?= $cod ?>&nome=<?= $nome ?>&data=<?= $data ?>&veiculos=<?= $veiculo ?>&obs=<?= $obs ?>&servico=<?= $servico ?>&funcionario=<?= $funcionario ?>" class="btn btn-danger btn-xs">Excluir</a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
