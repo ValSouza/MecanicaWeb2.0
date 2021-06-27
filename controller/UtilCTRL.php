@@ -22,5 +22,9 @@ class UtilCTRL{
         self::SetarFusorario();
         return date('d/m/Y');
     }
-    
+    public static function DataAtualBD()
+    {
+        self::SetarFusorario();
+        return date('Y-m-y');
+    }
 }

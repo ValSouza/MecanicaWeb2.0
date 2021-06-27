@@ -1,0 +1,252 @@
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_cliente1` FOREIGN KEY (`id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 08/05/2021 às 18:31
+Id do usuario logado: 1
+Função chamada: ExcluirCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_cliente1` FOREIGN KEY (`id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 10/05/2021 às 12:55
+Id do usuario logado: 1
+Função chamada: ExcluirCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_cliente1` FOREIGN KEY (`id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 10/05/2021 às 12:55
+Id do usuario logado: 1
+Função chamada: ExcluirCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 22:31
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 22:33
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 22:59
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 23:00
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Data: 14/05/2021 às 23:03
+Id do usuario logado: 1
+Função chamada: AlterarFuncionario
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_cliente' cannot be null
+Data: 23/06/2021 às 14:37
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_cliente' cannot be null
+Data: 23/06/2021 às 14:37
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_cliente' cannot be null
+Data: 23/06/2021 às 14:52
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_modelo1` FOREIGN KEY (`id_modelo`) REFERENCES `tb_modelo` (`id_modelo`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 23/06/2021 às 15:05
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_modelo1` FOREIGN KEY (`id_modelo`) REFERENCES `tb_modelo` (`id_modelo`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 23/06/2021 às 15:05
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_modelo1` FOREIGN KEY (`id_modelo`) REFERENCES `tb_modelo` (`id_modelo`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 23/06/2021 às 15:05
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_modelo1` FOREIGN KEY (`id_modelo`) REFERENCES `tb_modelo` (`id_modelo`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 23/06/2021 às 15:05
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_modelo1` FOREIGN KEY (`id_modelo`) REFERENCES `tb_modelo` (`id_modelo`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 23/06/2021 às 15:05
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_modelo1` FOREIGN KEY (`id_modelo`) REFERENCES `tb_modelo` (`id_modelo`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 23/06/2021 às 15:07
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_mecanica_2.0`.`tb_veiculo`, CONSTRAINT `fk_tb_veiculo_tb_modelo1` FOREIGN KEY (`id_modelo`) REFERENCES `tb_modelo` (`id_modelo`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Data: 23/06/2021 às 15:09
+Id do usuario logado: 1
+Função chamada: CadastrarVeiculos
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_servico1' in 'field list'
+Data: 23/06/2021 às 19:00
+Id do usuario logado: 1
+Função chamada: CadastrarServico
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_cliente1' in 'field list'
+Data: 24/06/2021 às 14:22
+Id do usuario logado: 1
+Função chamada: CadastrarCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_cliente1' in 'field list'
+Data: 24/06/2021 às 14:23
+Id do usuario logado: 1
+Função chamada: CadastrarCliente
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6
+************************************
+Erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_usuario' cannot be null
+Data:  às 
+Id do usuario logado: 
+Função chamada: 
+Ip do Cliente: ::1 - Nome da máquina: DESKTOP-INAEMP6

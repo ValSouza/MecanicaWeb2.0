@@ -11,9 +11,16 @@ if (isset($_POST['btnCadastrar'])) {
     $vo = new ModeloVO();
     $vo->setnomeModelo($_POST['modelo']);
     $vo->setidMarca($_POST['marca']);
-
     $ret = $ctrl->CadastrarModelo($vo);
-} else if (isset($_POST['btnExcluir'])) {
+} 
+else if(isset($_POST['btnAlterar'])) {  
+    $vo = new ModeloVO();
+    $vo->setidModelo($_POST['id_modelo']);
+    $vo->setnomeModelo($_POST['nome_modelo']); 
+    $vo->setidMarca($_POST['id_marca']); 
+    $ret= $ctrl->AlterarModelo($vo);
+  }
+else if (isset($_POST['btnExcluir'])) {
     $id = $_POST['id_item'];
     $ret = $ctrl->ExcluirModelo($id);
 }
@@ -133,8 +140,8 @@ $marcas = $ctrlMarcar->ConsultarMarca();
                                                     <td><?= $modelos[$i]['nome_marca'] ?></td>
                                                     <td><?= $modelos[$i]['nome_modelo'] ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                                                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $modelos[$i]['id_modelo'] ?>','<?= $modelos[$i]['nome_modelo'] ?>')">Excluir</a>
+                                                    <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-modelo" onclick="CarregarModalAlterarModelo('<?= $modelos[$i]['id_modelo'] ?>','<?= $modelos[$i]['nome_modelo'] ?>','<?= $modelos[$i]['id_marca'] ?>')">Alterar</a>
+                                                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $modelos[$i]['id_modelo'] ?>','<?= $modelos[$i]['nome_modelo'] ?>')">Excluir</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -143,6 +150,7 @@ $marcas = $ctrlMarcar->ConsultarMarca();
                                     <form method="POST" action="modelos.php">
                                         <?php
                                         include_once '../../template/_modal_excluir.php';
+                                        include_once 'modal/_modal_alterar_modelo.php';
                                         ?>
                                     </form>
                                 </div>

@@ -4,8 +4,9 @@ require_once '../../vo/FuncionarioVO.php';
 
 $ctrl = new FuncionarioCTRL;
 $situacao = '0';
+$vo = new FuncionarioVO();
 if (isset($_POST['btnCadastrar'])) {
-  $vo = new FuncionarioVO();
+ 
   $vo->setNomeStaff($_POST['nomeF']);
   $vo->setPhoneStaff($_POST['tel']);
   $vo->setSddressStaff($_POST['end']);
@@ -13,7 +14,19 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setSituation($situacao) ? '1' : '0';
 
   $ret = $ctrl->CadastrarFuncionario($vo);
-}else if (isset($_POST['btnExcluir'])) {
+} 
+else if(isset($_POST['btnAlterar'])) {  
+ 
+  $vo->setIdStaff($_POST['id_func']);
+  $vo->setNomeStaff($_POST['nome_func']); 
+  $vo->setPhoneStaff($_POST['tel_func']); 
+  $vo->setSddressStaff($_POST['end_func']);
+  
+  $situacao = isset($_POST['situacao']);
+  $vo->setSituation($situacao)? '1' : '0';
+  $ret= $ctrl->AlterarFuncionario($vo);
+}
+else if (isset($_POST['btnExcluir'])) {
   $id = $_POST['id_item'];
   $ret = $ctrl->ExcluirFuncionario($id);
 }
@@ -100,7 +113,7 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                       <div class="form-check">
                         <div class="custom-control custom-checkbox">
                           <label>
-                            <input type="checkbox" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?> />Ativo
+                          <input type="checkbox" class="form-check-input" id="situacao" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?> />Ativo
                           </label>
                         </div>
                       </div>
@@ -161,7 +174,7 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                           <td><?= $funcionarios[$i]['endereco_funcionario'] ?></td>
                           <td><?= $funcionarios[$i]['situacao_funcionario'] == 1 ? 'Ativo' : 'Inativo' ?></td>
                           <td>
-                            <a href="#" class="btn btn-warning btn-xs">Alterar</a>
+                            <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-func" onclick="CarregarModalAlterarFuncionario('<?= $funcionarios[$i]['id_funcionario'] ?>','<?= $funcionarios[$i]['nome_funcionario'] ?>','<?= $funcionarios[$i]['telefone_funcionario'] ?>','<?= $funcionarios[$i]['endereco_funcionario'] ?>','<?= $funcionarios[$i]['situacao_funcionario'] ?>')">Alterar</a>
                             <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $funcionarios[$i]['id_funcionario'] ?>','<?= $funcionarios[$i]['nome_funcionario'] ?>')">Excluir</a>
                           </td>
                         </tr>
@@ -171,6 +184,7 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                   <form method="POST" action="funcionario.php">
                     <?php
                     include_once '../../template/_modal_excluir.php';
+                    include_once 'modal/_modal_alterar_func.php';
                     ?>
                   </form>
                 </div>

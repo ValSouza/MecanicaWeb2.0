@@ -2,15 +2,15 @@
 require_once 'SistemaVO.php';
     class ServicoVO extends SistemaVO{
 
-        private $idUsuario;
+        private $idServico;
         private $nomeServico;
                
-        public function setidUsuario($idUsuario){
-            $this->idUsuario = $idUsuario;
+        public function setidServico($idServico){
+            $this->idServico = $idServico;
         }
 
-        public function getidUsuario(){
-            return $this->idUsuario;
+        public function getidServico(){
+            return $this->idServico;
         }
 
         public function setnomeServico($nomeServico){

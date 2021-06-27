@@ -5,6 +5,7 @@ require_once 'UtilCTRL.php';
 
 define('CadastrarMarca', 'CadastrarMarca');
 define('ExcluirMarca', 'ExcluirMarca');
+define('AlterarMarca', 'AlterarMarca');
 
 class MarcaCTRL{
 
@@ -42,5 +43,23 @@ class MarcaCTRL{
         $voSistema->setidLogado(UtilCTRL::CodigoUserLogado());
         return $dao->ExcluirMarca($id, $voSistema);
     }   
+
+    public function AlterarMarca(MarcaVO $vo)
+    {
+        if (
+            $vo->getnomeMarca() == '' 
+        ) {
+            return 0;
+        }
+        $dao = new MarcaDAO();
+
+        $vo->setData(UtilCTRL::DataAtual());
+        $vo->setHora(UtilCTRL::HoraAtual());
+        $vo->setFuncao(AlterarMarca);
+        $vo->setidLogado(UtilCTRL::CodigoUserLogado());
+
+        return $dao->AlterarMarca($vo);
+    }
+
     
 }

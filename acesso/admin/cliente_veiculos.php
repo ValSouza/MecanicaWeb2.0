@@ -1,38 +1,62 @@
 <?php
-include_once '../../vo/VeiculoVO.php';
-include_once '../../dao/ModeloDAO.php';
-include_once  '../../controller/ClienteCTRL.php';
+
 include_once  '../../controller/ModeloCTRL.php';
 include_once '../../controller/VeiculoCTRL.php';
-include_once '../../dao/VeiculoDAO.php';
-
-$dao = new VeiculoDAO();
-
+include_once '../../vo/VeiculoVO.php';
+$ctrl = new VeiculoCTRL();
 $ctrlModelo = new ModeloCTRL();
-$veic  ='';
-$nome = '';
-$codCli = '';
 
 if (isset($_GET['cod']) && isset($_GET['nome'])) {
-
-    $codCli = $_GET['cod'];
-    $nome = $_GET['nome'];
-    
-}
-elseif(isset($_POST['btnCadastrar'])){
     $vo = new VeiculoVO();
-    $ctrlVeiculo = new VeiculoCTRL();
+    $cod = $_GET['cod'];
+    $nome = $_GET['nome'];
+    $vo->setIdCliente($cod);
+    $veic = $ctrl->ConsultarVeiculo($vo);
+
+    $modelos = $ctrlModelo->ConsultarModelo();
+} elseif (isset($_POST['btnCadastrar'])) {
+    $cod = $_POST['cod'];
+    $nome = $_POST['nome'];
+    $modelo = $_POST['modelo'];
+    $placa = $_POST['placa'];
+    $cor = $_POST['cor'];
+
+    $vo = new VeiculoVO();
+    $vo->setPlaca($placa);
+    $vo->setCor($cor);
+    $vo->setIdCliente($cod);
+    $vo->setidModelo($modelo);
+    $ret = $ctrl->CadastrarVeiculos($vo);
+
+    $veic = $ctrl->ConsultarVeiculo($vo);
+    $modelos = $ctrlModelo->ConsultarModelo();
+}else if(isset($_POST['btnAlterar'])) {  
+    $nome=($_POST['nome_cli']);
+    $cod=($_POST['id_cli']);
     
-   $vo->setIdCliente($_POST['codCli']);
-   $vo->setCor($_POST['cor']);
-   $vo->setidModelo($_POST['modelo']);
-   $vo->setPlaca($_POST['placa']);  
+    $vo = new VeiculoVO();
+    $vo->setIdCliente($cod);
+    $vo->setPlaca($_POST['placa_veic']);
+    $vo->setCor($_POST['cor_veic']);
+    $vo->setidVeiculo($_POST['id_veic']);
+    $vo->setidModelo($_POST['modelo_veic']);
 
-    $ctrlVeiculo->CadastrarVeiculos($vo);
+    $ret= $ctrl->AlterarVeiculo($vo);
+    
+    $veic = $ctrl->ConsultarVeiculo($vo);
+    $modelos = $ctrlModelo->ConsultarModelo();
+  
+  }
 
-}
-$veic = $dao->ConsultarVeiculo($codCli);
-$modelos = $ctrlModelo->ConsultarModelo();
+else if (isset($_POST['btnExcluir'])) {
+   
+    $id = $_POST['id_item'];
+    $ret = $ctrl->ExcluirVeiculo($id);
+    header('location: consultar_cliente.php?ret=' . $ret);
+        exit;
+  }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +115,8 @@ $modelos = $ctrlModelo->ConsultarModelo();
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="hidden" class="form-control" value="<?= $codCli ?>" name="codCli" id="codCli">
+                                        <input type="hidden" id="cod" name="cod" value="<?= $cod ?>">
+                                        <input type="hidden" id="nome" name="nome" value="<?= $nome ?>">
                                         <input type="text" readonly class="form-control" value="<?= $nome ?>" id="nome" name="nome">
                                     </div>
                                 </div>
@@ -101,7 +126,7 @@ $modelos = $ctrlModelo->ConsultarModelo();
                                         <select class="form-control" name="modelo" id="modelo">
                                             <option value="">Selecione</option>
                                             <?php for ($i = 0; $i < count($modelos); $i++) { ?>
-                                                <option value="<?= $modelos[$i]['id_modelo'] ?>"><?= $modelos[$i]['nome_marca'] . ' / '. $modelos[$i]['nome_modelo'] ?></option>
+                                                <option value="<?= $modelos[$i]['id_modelo'] ?>"><?= $modelos[$i]['nome_marca'] . ' / ' . $modelos[$i]['nome_modelo'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -122,7 +147,7 @@ $modelos = $ctrlModelo->ConsultarModelo();
                                 </div>
                             </div>
                             <center>
-                                <button name="btnCadastrar" class="btn btn-outline-success">Cadastrar</button>
+                                <button name="btnCadastrar" class="btn btn-outline-success" onclick="return ValidarTela(7)">Cadastrar</button>
                                 <button name="btnCancelar" class="btn btn-outline-warning">Cancelar</button>
                             </center>
                         </form>
@@ -148,19 +173,25 @@ $modelos = $ctrlModelo->ConsultarModelo();
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php for($i =0; $i < count($veic); $i++){  ?>    
-                                            <tr>
-                                                <td><?= $veic[$i]['nome_marca'] . '/ ' . $veic[$i]['nome_modelo'] ?></td>
-                                                <td><?= $veic[$i]['placa_veiculo']?></td>
-                                                <td><?= $veic[$i]['cor_veiculo']?></td>
-                                                <td>
-                                                    <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                                                    <a href="#" class="btn btn-danger btn-xs">Excluir</a>
-                                                </td>
-                                            </tr>
+                                            <?php for ($i = 0; $i < count($veic); $i++) {  ?>
+                                                <tr>
+                                                    <td><?= $veic[$i]['nome_marca'] . '/ ' . $veic[$i]['nome_modelo'] ?></td>
+                                                    <td><?= $veic[$i]['placa_veiculo'] ?></td>
+                                                    <td><?= $veic[$i]['cor_veiculo'] ?></td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-veiculo" onclick="CarregarModalAlterarVeiculo('<?= $veic[$i]['id_veiculo'] ?>','<?= $veic[$i]['cor_veiculo'] ?>','<?= $veic[$i]['placa_veiculo'] ?>','<?= $veic[$i]['id_modelo'] ?>','<?= $veic[$i]['id_cliente'] ?>')">Alterar</a>                                                       
+                                                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $veic[$i]['id_veiculo'] ?>','<?= $veic[$i]['placa_veiculo'] ?>')">Excluir</a>
+                                                    </td>
+                                                </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
+                                    <form method="POST" action="cliente_veiculos.php">
+                                        <?php
+                                        include_once '../../template/_modal_excluir.php';
+                                        include_once '/modal/_modal_alterar_veiculo.php';
+                                        ?>
+                                    </form>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

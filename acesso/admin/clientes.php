@@ -5,8 +5,14 @@ $codCli = '';
 $nome = '';
 $tel = '';
 $end = '';
-
 $ctrl = new ClienteCTRL;
+
+if (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
+    $codCli = $_GET['cod'];
+    $nome = $_GET['nome'];
+    $tel = $_GET['tel'];
+    $end = $_GET['endereco'];
+}
 
 if (isset($_POST['btnCadastrar'])) {
     $vo = new ClienteVO();
@@ -14,17 +20,12 @@ if (isset($_POST['btnCadastrar'])) {
     $vo->setPhoneCliente($_POST['tel']);
     $vo->setAddressCliente($_POST['end']);
 
-    if ($_POST['codCLi'] == '') {
+    if ($codCli == '') {
         $ret = $ctrl->CadastrarCliente($vo);
         header('location: consultar_cliente.php?ret=' . $ret);
         exit;
     } else {
         $vo = new ClienteVO();
-        $codCli = $_GET['cod'];
-        $nome = $_GET['nome'];
-        $tel = $_GET['tel'];
-        $end = $_GET['endereco'];
-
         $vo->setIdCliente($codCli);
         $vo->setNomeCliente($nome);
         $vo->setPhoneCliente($tel);
@@ -35,11 +36,6 @@ if (isset($_POST['btnCadastrar'])) {
         header('location: consultar_cliente.php?ret=' . $ret);
         exit;
     }
-} elseif (isset($_GET['cod']) && isset($_GET['nome']) && isset($_GET['tel']) && isset($_GET['endereco'])) {
-    $codCli = $_GET['cod'];
-    $nome = $_GET['nome'];
-    $tel = $_GET['tel'];
-    $end = $_GET['endereco'];
 }
 
 
@@ -93,7 +89,7 @@ if (isset($_POST['btnCadastrar'])) {
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><?= $codCli == '' ? 'Cadastrar ' : 'Alterar ' ?>cliente aqui</h3>
+                        <h3 class="card-title"><?= $codCli == '' ? 'Cadastrar' : 'Alterar ' ?>cliente aqui</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="clientes.php">
@@ -123,7 +119,9 @@ if (isset($_POST['btnCadastrar'])) {
                             <center>
                                 <button name="btnCadastrar" class="btn btn-outline-success" onclick="return ValidarTela(6)">Cadastrar</button>
                                 <button name="btnCancelar" class="btn btn-outline-warning">Cancelar</button>
+                             
                             </center>
+                            
                         </form>
                     </div>
 

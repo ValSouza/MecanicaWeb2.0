@@ -32,11 +32,45 @@ class ServicoDAO extends Conexao
     public function CadastrarServico(ServicoVO $vo)
     {
 
-        $comando = 'insert into tb_servico (nome_servico, id_usuario) values (?,?)';
+        $comando = 'insert 
+                         into tb_servico (
+                             nome_servico,
+                              id_usuario) 
+                         values (?,?)';
         $this->sql = new PDOStatement();
         $this->sql = $this->conexao->prepare($comando);
         $this->sql->bindValue(1, $vo->getnomeServico());
         $this->sql->bindValue(2, $vo->getidLogado());
+
+        try {
+            $this->sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            //chamando pelo parent a função gravar erro da VO
+            parent::GravarErro(
+                $ex->getMessage(), //getmessage é o erro apresentado
+                $vo->getidLogado(),
+                $vo->getFuncao(),
+                $vo->getHora(),
+                $vo->getData(),
+                $vo->getiP()
+            );
+            return -1;
+        }
+    }
+    public function AlterarServico(ServicoVO $vo)
+    {
+
+        $comando = 'update
+                       tb_servico 
+                    set  
+                       nome_servico=?      
+                    where
+                       id_servico=?';
+        $this->sql = new PDOStatement();
+        $this->sql = $this->conexao->prepare($comando);
+        $this->sql->bindValue(1, $vo->getnomeServico());
+        $this->sql->bindValue(2, $vo->getidServico());
 
         try {
             $this->sql->execute();

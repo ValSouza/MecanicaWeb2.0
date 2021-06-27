@@ -44,6 +44,15 @@ function ValidarTela(n_tela) {
                 toastr.warning(RetonaMsg(0));
             }
             break;
+            case 7: //tela  modelos
+            if ($("#placa").val() == '' ||
+                $("#nome").val() == '' ||
+                $("#cor").val() == '' ||
+                $("#modelo").val() == '') {
+                retorno = false;
+                toastr.warning(RetonaMsg(0));
+            }
+            break;
 
     }
 

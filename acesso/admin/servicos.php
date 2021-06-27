@@ -7,9 +7,15 @@ if (isset($_POST['btnCadastrar'])) {
   $vo = new ServicoVO();
   $ctrl = new ServicoCTRL();
   $vo->setnomeServico($_POST['nome']);
-
   $ret = $ctrl->CadastrarServico($vo);
-}else if (isset($_POST['btnExcluir'])){
+}
+else if(isset($_POST['btnAlterar'])) {  
+  $vo = new ServicoVO();
+  $vo->setidServico($_POST['id_servico']);
+  $vo->setnomeServico($_POST['nome_servico']); 
+  $ret= $ctrl->AlterarServico($vo);
+}
+else if (isset($_POST['btnExcluir'])){
   $id=$_POST['id_item'];
   $ret=$ctrl->ExcluirServico($id);
 }
@@ -116,8 +122,8 @@ $servicos = $ctrl->ConsultarServico();
                         <tr>
                           <td><?= $servicos[$i]['nome_servico'] ?></td>
                           <td>
-                            <a href="#" class="btn btn-warning btn-xs">Alterar</a>
-                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $servicos[$i]['id_servico'] ?>','<?= $servicos[$i]['nome_servico'] ?>')">Excluir</a>
+                          <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar-servico" onclick="CarregarModalAlterarServico('<?= $servicos[$i]['id_servico'] ?>','<?= $servicos[$i]['nome_servico'] ?>')">Alterar</a>
+                           <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarModalExcluir('<?= $servicos[$i]['id_servico'] ?>','<?= $servicos[$i]['nome_servico'] ?>')">Excluir</a>
                           </td>
                         </tr>
                       <?php } ?>
@@ -126,6 +132,7 @@ $servicos = $ctrl->ConsultarServico();
                   <form method="POST" action="servicos.php">
                     <?php
                     include_once '../../template/_modal_excluir.php';
+                    include_once 'modal/_modal_alterar_servico.php';
                     ?>
                   </form>
                 </div>

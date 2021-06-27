@@ -84,4 +84,38 @@ class MarcaDAO extends Conexao
             return -2;
         }
     }
+
+    public function AlterarMarca(MarcaVO $vo)
+    {
+
+        $comando = 'update
+                       tb_marca 
+                    set  
+                       nome_marca=?      
+                    where
+                       id_marca=?';
+        $this->sql = new PDOStatement();
+        $this->sql = $this->conexao->prepare($comando);
+        $this->sql->bindValue(1, $vo->getnomeMarca());
+        $this->sql->bindValue(2, $vo->getidMarca());
+
+        try {
+            $this->sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            //chamando pelo parent a função gravar erro da VO
+            parent::GravarErro(
+                $ex->getMessage(), //getmessage é o erro apresentado
+                $vo->getidLogado(),
+                $vo->getFuncao(),
+                $vo->getHora(),
+                $vo->getData(),
+                $vo->getiP()
+            );
+            return -1;
+        }
+    }
+
+
+
 }

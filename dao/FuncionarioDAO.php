@@ -63,6 +63,44 @@ class FuncionarioDAO extends Conexao
         }
     }
 
+    public function AlterarFuncionario(FuncionarioVO $vo)
+    {
+
+        $comando = 'update
+                            tb_funcionario 
+                           set
+                                 nome_funcionario=?,
+                                 telefone_funcionario=?,
+                                 endereco_funcionario=?,
+                                 situacao_funcionario=?,
+                                 id_usuario=?
+                            where     
+                                  id_funcionario=?';
+        $this->sql = $this->conexao->prepare($comando);
+        $this->sql->bindValue(1, $vo->getNomeStaff());
+        $this->sql->bindValue(2, $vo->getPhoneStaff());
+        $this->sql->bindValue(3, $vo->getAddressStaff());
+        $this->sql->bindValue(4, $vo->getSituation());
+        $this->sql->bindValue(5, $vo->getidLogado());
+        $this->sql->bindValue(6, $vo->getIdStaff());
+
+        try {
+            $this->sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            //chamando pelo parent a função gravar erro da VO
+            parent::GravarErro(
+                $ex->getMessage(), //getmessage é o erro apresentado
+                $vo->getidLogado(),
+                $vo->getFuncao(),
+                $vo->getHora(),
+                $vo->getData(),
+                $vo->getiP()
+            );
+            return -1;
+        }
+    }
+
     public function ConsultarFuncionario()
     {
 

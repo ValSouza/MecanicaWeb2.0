@@ -1,17 +1,18 @@
 <?php
+
 require_once 'SistemaVO.php';
 
     class MarcaVO extends SistemaVO{
 
-        private $idUsuario;
+        private $idMarca;
         private $nomeMarca;
                
-        public function setidUsuario($idUsuario){
-            $this->idUsuario = $idUsuario;
+        public function setidMarca($idMarca){
+            $this->idMarca = $idMarca;
         }
 
-        public function getidUsuario(){
-            return $this->idUsuario;
+        public function getidMarca(){
+            return $this->idMarca;
         }
 
         public function setnomeMarca($nomeMarca){
