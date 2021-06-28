@@ -28,7 +28,8 @@ class FuncionarioCTRL{
 
     public function AlterarFuncionario(FuncionarioVO $vo){
 
-        if($vo->getNomeStaff()==''
+        if($vo->getIdStaff()== '' || $vo->getPhoneStaff() == '' || $vo->getAddressStaff() == '' || 
+           $vo->getPhoneStaff() || $vo->getSituation() == ''
         ){
             return 0;
         }        

@@ -24,11 +24,12 @@ function CarregarModalAlterarModelo(id,nome,idmarca) {
     $("#nome_modelo").val(nome); 
     $("#id_marca").val(idmarca);       
 }
-function CarregarModalAlterarFuncionario(id,nome,tel,end) {
+function CarregarModalAlterarFuncionario(id,nome,tel,end,sit) {
     $("#id_func").val(id);
     $("#nome_func").val(nome); 
     $("#tel_func").val(tel);
     $("#end_func").val(end);        
+    $("#situacao_func").val(sit);        
 }
 function CarregarModalAlterarVeiculo(id,cor,placa,modelo,idcli) {
     $("#id_veic").val(id);

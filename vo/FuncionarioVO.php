@@ -33,7 +33,7 @@ class FuncionarioVO extends SistemaVO{
             return $this->phoneStaff;
         }
 
-        public function setSddressStaff($address){
+        public function setAddressStaff($address){
             $this->addressStaff = ltrim(trim($address));
         }
 
