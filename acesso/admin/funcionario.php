@@ -7,7 +7,7 @@ $situacaoModal = '0';
 $ctrl = new FuncionarioCTRL;
 $vo = new FuncionarioVO();
 if (isset($_POST['btnCadastrar'])) {
- 
+
   $vo->setNomeStaff($_POST['nomeF']);
   $vo->setPhoneStaff($_POST['tel']);
   $vo->setAddressStaff($_POST['end']);
@@ -15,18 +15,15 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setSituation($situacao) ? '1' : '0';
 
   $ret = $ctrl->CadastrarFuncionario($vo);
-} 
-else if(isset($_POST['btnAlterar'])) {  
- 
+} else if (isset($_POST['btnAlterar'])) {
+
   $vo->setIdStaff($_POST['id_func']);
-  $vo->setNomeStaff($_POST['nome_func']); 
-  $vo->setPhoneStaff($_POST['tel_func']); 
+  $vo->setNomeStaff($_POST['nome_func']);
+  $vo->setPhoneStaff($_POST['tel_func']);
   $vo->setAddressStaff($_POST['end_func']);
-  $situacaoModal = isset($_POST['situacao_func']);
-  $vo->setSituation($situacaoModal)? '1' : '0';
+  $vo->setSituation(isset($_POST['situacao_func']) ? '1' : '0');
   $ret = $ctrl->AlterarFuncionario($vo);
-}
-else if (isset($_POST['btnExcluir'])) {
+} else if (isset($_POST['btnExcluir'])) {
   $id = $_POST['id_item'];
   $ret = $ctrl->ExcluirFuncionario($id);
 }
@@ -113,7 +110,7 @@ $funcionarios = $ctrl->ConsultarFuncionario();
                       <div class="form-check">
                         <div class="custom-control custom-checkbox">
                           <label>
-                          <input type="checkbox" class="form-check-input" id="situacao" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?>'>Ativo
+                            <input type="checkbox" class="form-check-input" id="situacao" name="situacao" <?= $situacao == '1' ? 'checked' : '' ?>'>Ativo
                           </label>
                         </div>
                       </div>

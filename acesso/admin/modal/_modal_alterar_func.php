@@ -39,7 +39,7 @@
                     <div class="form-check">
                         <div class="custom-control custom-checkbox">
                             <label>
-                                <input type="checkbox" id="situacao_func" name="situacao_func" <?= $situacaoModal == '1' ? 'checked' : '0' ?> />Ativo
+                                <input type="checkbox" id="situacao_func" name="situacao_func" <?= $situacaoModal == '1' ? 'checked' : '' ?> />Ativo
                             </label>
                         </div>
                     </div>
