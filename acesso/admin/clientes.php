@@ -1,7 +1,7 @@
 <?php
 require_once '../../controller/ClienteCTRL.php';
 require_once '../../vo/ClienteVO.php';
-//teste
+//testando a 357
 $ctrl = new ClienteCTRL;
 if (isset($_POST['btnCadastrar'])) {
   $vo = new ClienteVO();
