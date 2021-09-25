@@ -9,7 +9,7 @@ if (isset($_POST['btnCadastrar'])) {
   $vo->setnomeMarca($_POST['nome']);
 
   $ret = $ctrl->CadastrarMarca($vo);
-} else if (isset($_POST['btnExcluir'])) {
+}else if (isset($_POST['btnExcluir'])) {
   $id = $_POST['id_item'];
   $ret = $ctrl->ExcluirMarca($id);
 }
@@ -125,10 +125,10 @@ $marcas = $ctrl->ConsultarMarca();
                     </tbody>
                   </table>
                   <form method="POST" action="marca.php">
-                    <?php
-                    include_once '../../template/_modal_excluir.php';
-                    ?>
-                  </form>
+                                        <?php
+                                        include_once '../../template/_modal_excluir.php';
+                                        ?>
+                                    </form>
                 </div>
                 <!-- /.card-body -->
               </div>
