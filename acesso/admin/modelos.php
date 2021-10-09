@@ -128,7 +128,7 @@ $marcas = $ctrlMarcar->ConsultarMarca();
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php for ($id = 0; $i < count($modelos); $i++) { ?>
+                                            <?php for ($i = 0; $i < count($modelos); $i++) { ?>
                                                 <tr>
                                                     <td><?= $modelos[$i]['nome_marca'] ?></td>
                                                     <td><?= $modelos[$i]['nome_modelo'] ?></td>
